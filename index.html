@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DJ TIBU CRUZ | REAL SOUND</title>
+  <title>REAL SOUND</title>
 
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" type="image/png" href="https://iili.io/qr7otp9.md.png" />
-  <link rel="apple-touch-icon" href="https://iili.io/qr7otp9.md.png" />
+  <link rel="icon" type="image/png" href="https://iili.io/q655Cn2.md.png" />
+  <link rel="apple-touch-icon" href="https://iili.io/q655Cn2.md.png" />
   <meta name="theme-color" content="#0d0d0d" />
 
-  <meta name="description" content="DJ TIBU CRUZ | REAL SOUND. Radio en vivo, pedidos musicales y difusion directa por WhatsApp." />
+  <meta name="description" content="REAL SOUND. Radio en vivo, pedidos musicales y difusion directa por WhatsApp." />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="DJ TIBU CRUZ | REAL SOUND" />
-  <meta property="og:description" content="Escucha en vivo, pedi tu tema y conectate con el sonido de DJ TIBU CRUZ." />
-  <meta property="og:image" content="https://iili.io/qr7otp9.md.png" />
+  <meta property="og:title" content="REAL SOUND" />
+  <meta property="og:description" content="Escucha en vivo, pedi tu tema y conectate con REAL SOUND." />
+  <meta property="og:image" content="https://iili.io/q655Cn2.md.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -100,7 +100,6 @@
       max-width:780px;
     }
 
-    /* HEADER */
     .site-header{
       position:sticky;
       top:0;
@@ -223,7 +222,6 @@
       background:rgba(255,255,255,.05);
     }
 
-    /* HERO */
     .hero{
       padding:34px 0 12px;
     }
@@ -235,6 +233,17 @@
       padding:28px;
       position:relative;
       overflow:hidden;
+      background-image:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.62)),
+        url("https://iili.io/q6c9Hpn.jpg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+    body.light .hero-card{
+      background-image:
+        linear-gradient(rgba(255,255,255,.48), rgba(255,255,255,.56)),
+        url("https://iili.io/q6c9Hpn.jpg");
     }
     .hero-card::before{
       content:"";
@@ -247,6 +256,8 @@
     }
     .hero-copy{
       text-align:left;
+      position:relative;
+      z-index:2;
     }
     .hero-chip-row{
       display:flex;
@@ -260,8 +271,8 @@
       gap:8px;
       padding:8px 14px;
       border-radius:999px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
       color:var(--text);
       font-size:.84rem;
       font-weight:600;
@@ -294,10 +305,15 @@
       text-shadow:0 0 14px rgba(255,225,0,.22);
     }
     .hero p{
-      color:var(--muted);
+      color:#f2f2f2;
       line-height:1.65;
       font-size:1rem;
       max-width:640px;
+      text-shadow:0 2px 10px rgba(0,0,0,.35);
+    }
+    body.light .hero p{
+      color:#1c1c1c;
+      text-shadow:none;
     }
     .hero-actions{
       display:flex;
@@ -332,15 +348,17 @@
       box-shadow:0 12px 26px rgba(37,211,102,.18);
     }
     .btn-ghost{
-      background:rgba(255,255,255,.04);
+      background:rgba(255,255,255,.08);
       color:var(--text);
-      border:1px solid rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
     }
 
     .hero-visual{
       display:flex;
       justify-content:center;
       align-items:center;
+      position:relative;
+      z-index:2;
     }
     .hero-logo-wrap{
       width:min(100%, 460px);
@@ -348,8 +366,8 @@
       border-radius:28px;
       background:
         radial-gradient(circle at center, rgba(255,225,0,.12), transparent 46%),
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-      border:1px solid rgba(255,255,255,.08);
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.10);
       box-shadow:0 20px 50px rgba(0,0,0,.30);
       display:grid;
       place-items:center;
@@ -359,10 +377,9 @@
       width:100%;
       height:100%;
       object-fit:contain;
-      filter:drop-shadow(0 0 28px rgba(255,225,0,.14));
+      filter:drop-shadow(0 0 28px rgba(255,225,0,.16));
     }
 
-    /* INFO BAR */
     .info-bar{
       display:grid;
       grid-template-columns:repeat(4, minmax(0,1fr));
@@ -393,7 +410,6 @@
       font-size:1.15rem;
     }
 
-    /* PLAYER */
     .player-grid{
       display:grid;
       grid-template-columns:1fr 360px;
@@ -441,7 +457,6 @@
       font-size:.93rem;
     }
 
-    /* REQUEST FORM */
     .request-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -491,7 +506,6 @@
       margin-top:10px;
     }
 
-    /* PEDIDOS */
     .pedidos-list{
       display:grid;
       gap:12px;
@@ -539,7 +553,6 @@
       font-weight:700;
     }
 
-    /* FEATURES */
     .cards-3{
       display:grid;
       grid-template-columns:repeat(3, minmax(0,1fr));
@@ -564,7 +577,6 @@
       font-size:.92rem;
     }
 
-    /* CTA FINAL */
     .cta-final{
       display:grid;
       grid-template-columns:1.1fr .9fr;
@@ -599,7 +611,6 @@
       font-size:.94rem;
     }
 
-    /* FOOTER */
     .footer{
       padding:28px 0 110px;
     }
@@ -614,7 +625,6 @@
       font-weight:700;
     }
 
-    /* FLOATING WA */
     .floating-wa{
       position:fixed;
       right:14px;
@@ -639,7 +649,6 @@
       display:block;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 1024px){
       .hero-card,
       .player-grid,
@@ -735,10 +744,10 @@
   <header class="site-header">
     <div class="nav-wrap">
       <a href="#inicio" class="brand">
-        <img src="https://iili.io/qr7otp9.md.png" alt="DJ TIBU CRUZ REAL SOUND" class="brand-logo" />
+        <img src="https://iili.io/q655Cn2.md.png" alt="REAL SOUND" class="brand-logo" />
         <div class="brand-text">
-          <strong>DJ TIBU CRUZ</strong>
-          <span>REAL SOUND</span>
+          <strong>REAL SOUND</strong>
+          <span>Radio en vivo</span>
         </div>
       </a>
 
@@ -769,11 +778,11 @@
               <div class="chip">Pedidos por WhatsApp</div>
             </div>
 
-            <h1><span class="accent">DJ TIBU CRUZ</span><br>REAL SOUND</h1>
+            <h1><span class="accent">REAL</span><br>SOUND</h1>
 
             <p>
               Nuevo diseño completo, nueva imagen y todo el enfoque puesto en la radio.
-              Escuchá la transmisión, pedí tu tema y conectate directo por WhatsApp desde una web más limpia, más fuerte y sin nada del evento anterior.
+              Escuchá la transmisión, pedí tu tema y conectate directo por WhatsApp desde una web más limpia, más fuerte y con la nueva identidad visual.
             </p>
 
             <div class="hero-actions">
@@ -785,7 +794,7 @@
 
           <div class="hero-visual">
             <div class="hero-logo-wrap">
-              <img src="https://iili.io/qr7otp9.md.png" alt="Logo DJ TIBU CRUZ REAL SOUND" />
+              <img src="https://iili.io/q655Cn2.md.png" alt="Logo REAL SOUND" />
             </div>
           </div>
         </div>
@@ -816,7 +825,7 @@
         <div class="player-panel glass">
           <h2 class="section-title">Escuchar la radio</h2>
           <p class="section-sub">
-            Reproductor principal de DJ TIBU CRUZ | REAL SOUND. Desde aca podes iniciar la señal, compartirla o ir directo al WhatsApp para hacer pedidos.
+            Reproductor principal de REAL SOUND. Desde aca podes iniciar la señal, compartirla o ir directo al WhatsApp para hacer pedidos.
           </p>
 
           <div class="audio-wrap">
@@ -854,7 +863,7 @@
       <div class="section glass">
         <h2 class="section-title">Pedi tu tema por WhatsApp</h2>
         <p class="section-sub">
-          Tus datos quedan guardados en este dispositivo para que la proxima vez sea mas rapido. Todo orientado al pedido musical, sin secciones viejas ni contenido del evento anterior.
+          Tus datos quedan guardados en este dispositivo para que la proxima vez sea mas rapido. Todo orientado al pedido musical.
         </p>
 
         <form id="temaForm" class="request-grid" novalidate>
@@ -898,7 +907,7 @@
       <div class="section glass">
         <h2 class="section-title">Nuevo enfoque del sitio</h2>
         <p class="section-sub">
-          Todo el contenido de Cannafest, del evento y de Jah Roots fue eliminado. Esta version queda centrada en la marca DJ TIBU CRUZ | REAL SOUND.
+          Esta version queda centrada en la marca REAL SOUND, con la nueva imagen en el hero y fondo renovado.
         </p>
 
         <div class="cards-3">
@@ -917,9 +926,9 @@
           </article>
 
           <article class="feature-card">
-            <h3>Codigo nuevo</h3>
+            <h3>Hero actualizado</h3>
             <p>
-              Esta version esta armada desde cero, con otro layout, otra jerarquia visual y sin arrastrar lo del diseño anterior.
+              El hero ahora muestra la nueva imagen principal y el nuevo background que pediste.
             </p>
           </article>
         </div>
@@ -942,10 +951,10 @@
 
         <div class="cta-card glass">
           <div class="cta-list">
-            <div>Marca principal: DJ TIBU CRUZ</div>
-            <div>Submarca: REAL SOUND</div>
+            <div>Marca principal: REAL SOUND</div>
             <div>Foco actual: radio en vivo + pedidos</div>
-            <div>Imagen reemplazada en todo el sitio</div>
+            <div>Hero actualizado con nueva imagen</div>
+            <div>Background nuevo aplicado</div>
           </div>
         </div>
       </div>
@@ -965,8 +974,7 @@
   </a>
 
   <script>
-    /* THEME */
-    const THEME_KEY = "dj_tibu_cruz_theme_v1";
+    const THEME_KEY = "real_sound_theme_v1";
     const body = document.body;
     const themeToggle = document.getElementById("themeToggle");
 
@@ -982,7 +990,6 @@
       localStorage.setItem(THEME_KEY, body.classList.contains("light") ? "light" : "dark");
     });
 
-    /* MOBILE MENU */
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
@@ -998,7 +1005,6 @@
       });
     });
 
-    /* PLAYER */
     const audio = document.getElementById("radioPlayer");
     const playBtn = document.getElementById("playBtn");
     const playerStatus = document.getElementById("playerStatus");
@@ -1023,16 +1029,15 @@
     }
 
     function shareRadio(){
-      const text = "Escucha DJ TIBU CRUZ | REAL SOUND";
+      const text = "Escucha REAL SOUND";
       const url = window.location.href;
       if(navigator.share){
-        navigator.share({ title: "DJ TIBU CRUZ | REAL SOUND", text, url }).catch(() => {});
+        navigator.share({ title: "REAL SOUND", text, url }).catch(() => {});
       } else {
-        alert("Copiá y compartí:\\n" + text + "\\n" + url);
+        alert("Copiá y compartí:\n" + text + "\n" + url);
       }
     }
 
-    /* TIME */
     function updateClock(){
       const now = new Date();
       const hora = now.toLocaleTimeString("es-AR", {
@@ -1053,9 +1058,8 @@
     updateClock();
     setInterval(updateClock, 1000);
 
-    /* OYENTES DINAMICOS */
     const oyentesEl = document.getElementById("oyentesCount");
-    const OYENTES_KEY = "dj_tibu_cruz_oyentes_v1";
+    const OYENTES_KEY = "real_sound_oyentes_v1";
 
     function clamp(n, min, max){
       return Math.max(min, Math.min(max, n));
@@ -1136,7 +1140,6 @@
     initOyentes();
     setInterval(tickOyentes, 9000);
 
-    /* PEDIDOS DINAMICOS */
     const pedidosData = [
       {n:"Leo", z:"Wilde", t:"Bob Marley - Is This Love"},
       {n:"Mica", z:"Quilmes", t:"Dread Mar I - Tu Sin Mi"},
@@ -1211,12 +1214,11 @@
     renderPedidosBlock();
     setInterval(renderPedidosBlock, 9000);
 
-    /* FORM */
     const temaForm = document.getElementById("temaForm");
     const nombreOyente = document.getElementById("nombreOyente");
     const numeroOyente = document.getElementById("numeroOyente");
     const pedidoTema = document.getElementById("pedidoTema");
-    const FORM_KEY = "dj_tibu_cruz_form_v1";
+    const FORM_KEY = "real_sound_form_v1";
 
     (function loadSavedForm(){
       try{
@@ -1254,17 +1256,16 @@
       }
 
       const partes = [];
-      partes.push("Hola! Quiero pedir un tema en DJ TIBU CRUZ | REAL SOUND.");
+      partes.push("Hola! Quiero pedir un tema en REAL SOUND.");
       if(nombre) partes.push(`Nombre: ${nombre}`);
       if(numero) partes.push(`Numero: ${numero}`);
       partes.push(`Pedido: ${pedido}`);
 
-      const texto = encodeURIComponent(partes.join("\\n"));
+      const texto = encodeURIComponent(partes.join("\n"));
       const waUrl = `https://wa.me/message/KPWJHN63WA3MA1?text=${texto}`;
       window.open(waUrl, "_blank", "noopener,noreferrer");
     });
 
-    /* FOOTER SAFE WHATSAPP */
     (function waNoTapeFooter(){
       const waBtn = document.querySelector(".floating-wa");
       const footer = document.querySelector(".footer");
@@ -1286,7 +1287,6 @@
       observer.observe(footer);
     })();
 
-    /* PWA */
     if("serviceWorker" in navigator){
       navigator.serviceWorker.register("/service-worker.js").catch(() => {});
     }
