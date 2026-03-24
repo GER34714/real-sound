@@ -24,11 +24,11 @@
     :root{
       --bg:#050505;
       --bg2:#101010;
-      --card:rgba(14,14,14,.82);
+      --card:rgba(14,14,14,.78);
       --card-2:rgba(20,20,20,.72);
       --line:rgba(255,230,0,.18);
       --text:#f7f7f7;
-      --muted:#cfcfcf;
+      --muted:#d9d9d9;
       --yellow:#ffe100;
       --green:#24d34a;
       --red:#ff3b1f;
@@ -42,26 +42,33 @@
     html{scroll-behavior:smooth}
     body{
       font-family:'Poppins',sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(36,211,74,.08), transparent 30%),
-        radial-gradient(circle at top right, rgba(255,225,0,.08), transparent 30%),
-        linear-gradient(180deg, #050505 0%, #0b0b0b 50%, #050505 100%);
       color:var(--text);
       overflow-x:hidden;
+      background-image:
+        linear-gradient(rgba(0,0,0,.68), rgba(0,0,0,.76)),
+        url("https://iili.io/q6c9Hpn.jpg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
+      min-height:100vh;
     }
     body.light{
       --bg:#f6f6f6;
       --bg2:#ffffff;
-      --card:rgba(255,255,255,.84);
+      --card:rgba(255,255,255,.82);
       --card-2:rgba(255,255,255,.76);
       --line:rgba(0,0,0,.08);
       --text:#111111;
-      --muted:#5d5d5d;
+      --muted:#4f4f4f;
       --shadow:0 12px 36px rgba(0,0,0,.08);
-      background:
-        radial-gradient(circle at top left, rgba(36,211,74,.08), transparent 30%),
-        radial-gradient(circle at top right, rgba(255,225,0,.08), transparent 30%),
-        linear-gradient(180deg, #f7f7f7 0%, #ececec 50%, #f7f7f7 100%);
+      background-image:
+        linear-gradient(rgba(255,255,255,.70), rgba(255,255,255,.78)),
+        url("https://iili.io/q6c9Hpn.jpg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
     }
 
     a{text-decoration:none;color:inherit}
@@ -233,17 +240,6 @@
       padding:28px;
       position:relative;
       overflow:hidden;
-      background-image:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.62)),
-        url("https://iili.io/q6c9Hpn.jpg");
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-    }
-    body.light .hero-card{
-      background-image:
-        linear-gradient(rgba(255,255,255,.48), rgba(255,255,255,.56)),
-        url("https://iili.io/q6c9Hpn.jpg");
     }
     .hero-card::before{
       content:"";
@@ -650,6 +646,10 @@
     }
 
     @media (max-width: 1024px){
+      body,
+      body.light{
+        background-attachment:scroll;
+      }
       .hero-card,
       .player-grid,
       .cta-final{
@@ -907,7 +907,7 @@
       <div class="section glass">
         <h2 class="section-title">Nuevo enfoque del sitio</h2>
         <p class="section-sub">
-          Esta version queda centrada en la marca REAL SOUND, con la nueva imagen en el hero y fondo renovado.
+          Esta version queda centrada en la marca REAL SOUND, con la nueva imagen en el hero y el background aplicado en toda la web.
         </p>
 
         <div class="cards-3">
@@ -926,9 +926,9 @@
           </article>
 
           <article class="feature-card">
-            <h3>Hero actualizado</h3>
+            <h3>Background global</h3>
             <p>
-              El hero ahora muestra la nueva imagen principal y el nuevo background que pediste.
+              La imagen de fondo ahora queda aplicada detras de toda la web, no solo en el hero.
             </p>
           </article>
         </div>
@@ -954,7 +954,7 @@
             <div>Marca principal: REAL SOUND</div>
             <div>Foco actual: radio en vivo + pedidos</div>
             <div>Hero actualizado con nueva imagen</div>
-            <div>Background nuevo aplicado</div>
+            <div>Background nuevo aplicado en toda la web</div>
           </div>
         </div>
       </div>
