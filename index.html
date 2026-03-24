@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DJ TIBU CRUZ | REAL SOUND</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="https://iili.io/qr7otp9.md.png" />
+  <link rel="apple-touch-icon" href="https://iili.io/qr7otp9.md.png" />
+  <meta name="theme-color" content="#0d0d0d" />
+
+  <meta name="description" content="DJ TIBU CRUZ | REAL SOUND. Radio en vivo, pedidos musicales y difusion directa por WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DJ TIBU CRUZ | REAL SOUND" />
+  <meta property="og:description" content="Escucha en vivo, pedi tu tema y conectate con el sonido de DJ TIBU CRUZ." />
+  <meta property="og:image" content="https://iili.io/qr7otp9.md.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#050505;
+      --bg2:#101010;
+      --card:rgba(14,14,14,.82);
+      --card-2:rgba(20,20,20,.72);
+      --line:rgba(255,230,0,.18);
+      --text:#f7f7f7;
+      --muted:#cfcfcf;
+      --yellow:#ffe100;
+      --green:#24d34a;
+      --red:#ff3b1f;
+      --orange:#ff7b00;
+      --shadow:0 0 24px rgba(255,225,0,.12);
+      --radius:22px;
+      --container:1180px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(36,211,74,.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(255,225,0,.08), transparent 30%),
+        linear-gradient(180deg, #050505 0%, #0b0b0b 50%, #050505 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    body.light{
+      --bg:#f6f6f6;
+      --bg2:#ffffff;
+      --card:rgba(255,255,255,.84);
+      --card-2:rgba(255,255,255,.76);
+      --line:rgba(0,0,0,.08);
+      --text:#111111;
+      --muted:#5d5d5d;
+      --shadow:0 12px 36px rgba(0,0,0,.08);
+      background:
+        radial-gradient(circle at top left, rgba(36,211,74,.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(255,225,0,.08), transparent 30%),
+        linear-gradient(180deg, #f7f7f7 0%, #ececec 50%, #f7f7f7 100%);
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    button,input,textarea{font:inherit}
+    .container{
+      width:min(var(--container), calc(100% - 32px));
+      margin-inline:auto;
+    }
+
+    .glass{
+      background:var(--card);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-radius:var(--radius);
+    }
+
+    .section{
+      padding:28px;
+      margin-top:18px;
+    }
+
+    .section-title{
+      font-family:'Montserrat',sans-serif;
+      font-size:1.5rem;
+      font-weight:800;
+      margin-bottom:8px;
+      line-height:1.1;
+    }
+    .section-sub{
+      color:var(--muted);
+      line-height:1.55;
+      font-size:.97rem;
+      max-width:780px;
+    }
+
+    /* HEADER */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      background:rgba(0,0,0,.55);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    body.light .site-header{
+      background:rgba(255,255,255,.72);
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+
+    .nav-wrap{
+      width:min(var(--container), calc(100% - 24px));
+      margin-inline:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+    .brand-logo{
+      width:52px;
+      height:52px;
+      object-fit:contain;
+      border-radius:50%;
+      background:#000;
+      padding:4px;
+      box-shadow:0 0 16px rgba(255,225,0,.18);
+      flex-shrink:0;
+    }
+    .brand-text{
+      min-width:0;
+    }
+    .brand-text strong{
+      display:block;
+      font-family:'Montserrat',sans-serif;
+      font-size:1rem;
+      line-height:1;
+      letter-spacing:.4px;
+    }
+    .brand-text span{
+      display:block;
+      color:var(--muted);
+      font-size:.78rem;
+      margin-top:4px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .theme-toggle{
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--card-2);
+      color:var(--text);
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+    }
+
+    .menu-toggle{
+      display:none;
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:var(--card-2);
+      color:var(--text);
+      cursor:pointer;
+      position:relative;
+    }
+    .menu-toggle span{
+      position:absolute;
+      left:11px;
+      right:11px;
+      height:2px;
+      background:currentColor;
+      border-radius:999px;
+      transition:.25s ease;
+    }
+    .menu-toggle span:nth-child(1){top:14px}
+    .menu-toggle span:nth-child(2){top:22px}
+    .menu-toggle span:nth-child(3){top:30px}
+    .menu-toggle.active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .menu-toggle.active span:nth-child(2){opacity:0}
+    .menu-toggle.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .nav-links a{
+      padding:10px 14px;
+      border-radius:999px;
+      color:var(--muted);
+      transition:.2s ease;
+      font-size:.94rem;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.05);
+    }
+
+    /* HERO */
+    .hero{
+      padding:34px 0 12px;
+    }
+    .hero-card{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:22px;
+      align-items:center;
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:auto -120px -120px auto;
+      width:280px;
+      height:280px;
+      background:radial-gradient(circle, rgba(255,225,0,.08), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-copy{
+      text-align:left;
+    }
+    .hero-chip-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:14px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--text);
+      font-size:.84rem;
+      font-weight:600;
+    }
+    .chip.live .dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:#ff2d2d;
+      box-shadow:0 0 12px rgba(255,0,0,.55);
+      animation:pulse 1.1s infinite;
+    }
+    @keyframes pulse{
+      0%{transform:scale(.9);opacity:.7}
+      50%{transform:scale(1.25);opacity:1}
+      100%{transform:scale(.9);opacity:.7}
+    }
+
+    .hero h1{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(2rem, 4vw, 4.1rem);
+      line-height:.98;
+      font-weight:800;
+      margin-bottom:12px;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
+    .hero h1 .accent{
+      color:var(--yellow);
+      text-shadow:0 0 14px rgba(255,225,0,.22);
+    }
+    .hero p{
+      color:var(--muted);
+      line-height:1.65;
+      font-size:1rem;
+      max-width:640px;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .btn{
+      border:none;
+      border-radius:999px;
+      padding:14px 20px;
+      font-weight:700;
+      font-size:.96rem;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn:active{transform:translateY(0)}
+    .btn-primary{
+      background:linear-gradient(135deg, var(--yellow), #ffb300);
+      color:#131313;
+      box-shadow:0 12px 26px rgba(255,179,0,.22);
+    }
+    .btn-secondary{
+      background:linear-gradient(135deg, var(--green), #1da34d);
+      color:#071209;
+      box-shadow:0 12px 26px rgba(37,211,102,.18);
+    }
+    .btn-ghost{
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .hero-visual{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .hero-logo-wrap{
+      width:min(100%, 460px);
+      aspect-ratio:1/1;
+      border-radius:28px;
+      background:
+        radial-gradient(circle at center, rgba(255,225,0,.12), transparent 46%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 20px 50px rgba(0,0,0,.30);
+      display:grid;
+      place-items:center;
+      padding:18px;
+    }
+    .hero-logo-wrap img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      filter:drop-shadow(0 0 28px rgba(255,225,0,.14));
+    }
+
+    /* INFO BAR */
+    .info-bar{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+    .info-box{
+      padding:16px;
+      border-radius:18px;
+      background:var(--card);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      text-align:left;
+    }
+    .info-box .label{
+      font-size:.78rem;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    .info-box .value{
+      font-size:1rem;
+      font-weight:700;
+      color:var(--text);
+      line-height:1.25;
+    }
+    .info-box .value strong{
+      color:var(--yellow);
+      font-size:1.15rem;
+    }
+
+    /* PLAYER */
+    .player-grid{
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:18px;
+      align-items:start;
+    }
+    .player-panel{
+      padding:24px;
+    }
+    .audio-wrap{
+      margin-top:18px;
+    }
+    audio{
+      width:100%;
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .status{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    .player-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .side-cards{
+      display:grid;
+      gap:18px;
+    }
+    .mini-panel{
+      padding:22px;
+    }
+    .mini-panel h3{
+      font-family:'Montserrat',sans-serif;
+      font-size:1.06rem;
+      margin-bottom:8px;
+    }
+    .mini-panel p{
+      color:var(--muted);
+      line-height:1.55;
+      font-size:.93rem;
+    }
+
+    /* REQUEST FORM */
+    .request-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:18px;
+    }
+    .field{
+      text-align:left;
+    }
+    .field.full{
+      grid-column:1/-1;
+    }
+    .field label{
+      display:block;
+      margin-bottom:7px;
+      font-size:.88rem;
+      font-weight:600;
+    }
+    .field input,
+    .field textarea{
+      width:100%;
+      padding:14px 16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      outline:none;
+      transition:border-color .18s ease, box-shadow .18s ease;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder{
+      color:#9d9d9d;
+    }
+    .field textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+    .field input:focus,
+    .field textarea:focus{
+      border-color:rgba(255,225,0,.35);
+      box-shadow:0 0 0 4px rgba(255,225,0,.08);
+    }
+    .helper{
+      color:var(--muted);
+      font-size:.86rem;
+      line-height:1.5;
+      margin-top:10px;
+    }
+
+    /* PEDIDOS */
+    .pedidos-list{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+    .pedido-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding:16px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      animation:fadeUp .35s ease both;
+    }
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(10px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    .pedido-item .left{
+      min-width:0;
+    }
+    .pedido-item strong{
+      display:block;
+      font-size:.97rem;
+      margin-bottom:4px;
+    }
+    .pedido-item span{
+      display:block;
+      font-size:.88rem;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .pedido-badge{
+      flex-shrink:0;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,225,0,.08);
+      border:1px solid rgba(255,225,0,.18);
+      color:var(--yellow);
+      font-size:.78rem;
+      font-weight:700;
+    }
+
+    /* FEATURES */
+    .cards-3{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+    .feature-card{
+      padding:22px;
+      border-radius:20px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      text-align:left;
+    }
+    .feature-card h3{
+      font-family:'Montserrat',sans-serif;
+      font-size:1.05rem;
+      margin-bottom:8px;
+    }
+    .feature-card p{
+      color:var(--muted);
+      line-height:1.55;
+      font-size:.92rem;
+    }
+
+    /* CTA FINAL */
+    .cta-final{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:center;
+    }
+    .cta-card{
+      padding:28px;
+    }
+    .cta-card h2{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(1.8rem, 3vw, 2.8rem);
+      line-height:1.02;
+      margin-bottom:12px;
+      text-transform:uppercase;
+    }
+    .cta-card p{
+      color:var(--muted);
+      line-height:1.65;
+      max-width:720px;
+    }
+    .cta-list{
+      display:grid;
+      gap:10px;
+      margin-top:18px;
+    }
+    .cta-list div{
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      font-size:.94rem;
+    }
+
+    /* FOOTER */
+    .footer{
+      padding:28px 0 110px;
+    }
+    .footer-card{
+      padding:18px 20px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+    .footer-card a{
+      color:var(--yellow);
+      font-weight:700;
+    }
+
+    /* FLOATING WA */
+    .floating-wa{
+      position:fixed;
+      right:14px;
+      bottom:16px;
+      z-index:70;
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#25D366;
+      box-shadow:0 14px 26px rgba(37,211,102,.32);
+      border:1px solid rgba(255,255,255,.18);
+      transition:bottom .22s ease, transform .18s ease;
+    }
+    .floating-wa:hover{transform:translateY(-2px)}
+    .floating-wa.footer-safe{bottom:94px}
+    .floating-wa svg{
+      width:28px;
+      height:28px;
+      fill:#fff;
+      display:block;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px){
+      .hero-card,
+      .player-grid,
+      .cta-final{
+        grid-template-columns:1fr;
+      }
+      .info-bar{
+        grid-template-columns:repeat(2, minmax(0,1fr));
+      }
+      .cards-3{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 780px){
+      .menu-toggle{display:grid;place-items:center}
+      .nav-links{
+        position:absolute;
+        left:12px;
+        right:12px;
+        top:78px;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        gap:8px;
+        padding:12px;
+        border-radius:18px;
+        background:var(--card);
+        border:1px solid var(--line);
+        box-shadow:var(--shadow);
+      }
+      .nav-links.open{display:flex}
+      .nav-links a{
+        text-align:center;
+        width:100%;
+        background:rgba(255,255,255,.03);
+      }
+      .request-grid{
+        grid-template-columns:1fr;
+      }
+      .hero{
+        padding-top:20px;
+      }
+      .hero-card,
+      .section,
+      .player-panel,
+      .mini-panel,
+      .cta-card{
+        padding:20px;
+      }
+      .info-bar{
+        grid-template-columns:1fr;
+      }
+      .hero-actions,
+      .player-actions{
+        flex-direction:column;
+      }
+      .hero-actions .btn,
+      .player-actions .btn{
+        width:100%;
+      }
+      .pedido-item{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+      .brand-text span{
+        max-width:180px;
+      }
+    }
+
+    @media (max-width: 560px){
+      .brand-logo{
+        width:46px;
+        height:46px;
+      }
+      .brand-text strong{
+        font-size:.92rem;
+      }
+      .hero h1{
+        font-size:1.9rem;
+      }
+      .section-title{
+        font-size:1.25rem;
+      }
+      .hero-logo-wrap{
+        border-radius:22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="#inicio" class="brand">
+        <img src="https://iili.io/qr7otp9.md.png" alt="DJ TIBU CRUZ REAL SOUND" class="brand-logo" />
+        <div class="brand-text">
+          <strong>DJ TIBU CRUZ</strong>
+          <span>REAL SOUND</span>
+        </div>
+      </a>
+
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">◐</button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#radio">Radio</a>
+        <a href="#pedidos">Pedidos</a>
+        <a href="#sonido">Sonido</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card glass">
+          <div class="hero-copy">
+            <div class="hero-chip-row">
+              <div class="chip live"><span class="dot"></span> En vivo</div>
+              <div class="chip">Real Sound</div>
+              <div class="chip">Pedidos por WhatsApp</div>
+            </div>
+
+            <h1><span class="accent">DJ TIBU CRUZ</span><br>REAL SOUND</h1>
+
+            <p>
+              Nuevo diseño completo, nueva imagen y todo el enfoque puesto en la radio.
+              Escuchá la transmisión, pedí tu tema y conectate directo por WhatsApp desde una web más limpia, más fuerte y sin nada del evento anterior.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#radio" class="btn btn-primary">Escuchar ahora</a>
+              <a href="#pedidos" class="btn btn-secondary">Pedir mi tema</a>
+              <a href="#contacto" class="btn btn-ghost">Ir al contacto</a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-logo-wrap">
+              <img src="https://iili.io/qr7otp9.md.png" alt="Logo DJ TIBU CRUZ REAL SOUND" />
+            </div>
+          </div>
+        </div>
+
+        <div class="info-bar">
+          <div class="info-box">
+            <div class="label">Oyentes en este momento</div>
+            <div class="value"><strong id="oyentesCount">248</strong> conectados</div>
+          </div>
+          <div class="info-box">
+            <div class="label">Estado de la señal</div>
+            <div class="value">Transmision activa</div>
+          </div>
+          <div class="info-box">
+            <div class="label">Hora actual</div>
+            <div class="value" id="horaActual">--:--:--</div>
+          </div>
+          <div class="info-box">
+            <div class="label">Fecha</div>
+            <div class="value" id="fechaActual">Cargando...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="radio">
+      <div class="player-grid">
+        <div class="player-panel glass">
+          <h2 class="section-title">Escuchar la radio</h2>
+          <p class="section-sub">
+            Reproductor principal de DJ TIBU CRUZ | REAL SOUND. Desde aca podes iniciar la señal, compartirla o ir directo al WhatsApp para hacer pedidos.
+          </p>
+
+          <div class="audio-wrap">
+            <audio id="radioPlayer" preload="none" src="https://usa15.fastcast4u.com/proxy/ciborg347?mp=/1"></audio>
+          </div>
+
+          <div class="player-actions">
+            <button class="btn btn-primary" id="playBtn" onclick="toggleRadio()">▶ Escuchar radio</button>
+            <button class="btn btn-ghost" onclick="shareRadio()">📲 Compartir</button>
+            <a class="btn btn-secondary" href="https://wa.me/message/KPWJHN63WA3MA1" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+          </div>
+
+          <div class="status" id="playerStatus">La radio esta detenida.</div>
+        </div>
+
+        <div class="side-cards">
+          <div class="mini-panel glass">
+            <h3>Sonido directo</h3>
+            <p>
+              Pagina simplificada y renovada para centrar toda la experiencia en la musica, la reproduccion en vivo y la comunicacion rapida.
+            </p>
+          </div>
+
+          <div class="mini-panel glass">
+            <h3>Pedido rapido</h3>
+            <p>
+              Dejas tu nombre, opcionalmente tu numero, escribis el tema y se abre WhatsApp con el mensaje ya armado para enviar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="pedidos">
+      <div class="section glass">
+        <h2 class="section-title">Pedi tu tema por WhatsApp</h2>
+        <p class="section-sub">
+          Tus datos quedan guardados en este dispositivo para que la proxima vez sea mas rapido. Todo orientado al pedido musical, sin secciones viejas ni contenido del evento anterior.
+        </p>
+
+        <form id="temaForm" class="request-grid" novalidate>
+          <div class="field">
+            <label for="nombreOyente">Nombre</label>
+            <input id="nombreOyente" type="text" placeholder="Ej: Martin" autocomplete="name" />
+          </div>
+
+          <div class="field">
+            <label for="numeroOyente">Numero (opcional)</label>
+            <input id="numeroOyente" type="tel" placeholder="Ej: 11 1234 5678" autocomplete="tel" />
+          </div>
+
+          <div class="field full">
+            <label for="pedidoTema">Pedido musical</label>
+            <textarea id="pedidoTema" placeholder="Ej: Quiero pedir un tema y mandar un saludo..."></textarea>
+          </div>
+
+          <div class="field full">
+            <button type="submit" class="btn btn-secondary" style="width:100%;">Enviar pedido por WhatsApp</button>
+            <div class="helper">
+              Solo se enfoca en pedidos musicales. Al enviar, se abre WhatsApp con el mensaje listo.
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section glass">
+        <h2 class="section-title">Ultimos pedidos</h2>
+        <p class="section-sub">
+          Lista dinamica que rota automaticamente para darle movimiento a la web y mostrar actividad constante.
+        </p>
+
+        <div class="pedidos-list" id="pedidosList"></div>
+      </div>
+    </section>
+
+    <section class="container" id="sonido">
+      <div class="section glass">
+        <h2 class="section-title">Nuevo enfoque del sitio</h2>
+        <p class="section-sub">
+          Todo el contenido de Cannafest, del evento y de Jah Roots fue eliminado. Esta version queda centrada en la marca DJ TIBU CRUZ | REAL SOUND.
+        </p>
+
+        <div class="cards-3">
+          <article class="feature-card">
+            <h3>Identidad renovada</h3>
+            <p>
+              Se usa la nueva imagen como logo principal de toda la web y de los metadatos para compartir.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Radio + pedidos</h3>
+            <p>
+              La estructura prioriza reproducir la radio y hacer pedidos sin distracciones ni bloques que no sumen.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Codigo nuevo</h3>
+            <p>
+              Esta version esta armada desde cero, con otro layout, otra jerarquia visual y sin arrastrar lo del diseño anterior.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="contacto">
+      <div class="cta-final">
+        <div class="cta-card glass">
+          <h2>Conectate con<br>REAL SOUND</h2>
+          <p>
+            Si queres mandar un pedido, compartir la radio o escribir directo, el canal principal es WhatsApp. Todo pensado para que la gente entre, escuche y se comunique rapido.
+          </p>
+
+          <div class="hero-actions" style="margin-top:18px;">
+            <a class="btn btn-secondary" href="https://wa.me/message/KPWJHN63WA3MA1" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
+            <button class="btn btn-ghost" onclick="shareRadio()">Compartir la pagina</button>
+          </div>
+        </div>
+
+        <div class="cta-card glass">
+          <div class="cta-list">
+            <div>Marca principal: DJ TIBU CRUZ</div>
+            <div>Submarca: REAL SOUND</div>
+            <div>Foco actual: radio en vivo + pedidos</div>
+            <div>Imagen reemplazada en todo el sitio</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-card glass">
+        Creado y diseñado por <a href="https://ciborg347oficial.onrender.com" target="_blank" rel="noopener noreferrer">Ciborg 347</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating-wa" href="https://wa.me/message/KPWJHN63WA3MA1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.47 0 .09 5.36.09 11.96c0 2.11.55 4.18 1.6 6.01L0 24l6.2-1.62a11.92 11.92 0 0 0 5.87 1.5h.01c6.59 0 11.97-5.36 11.97-11.96c0-3.2-1.25-6.2-3.53-8.44ZM12.08 21.86h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.68.96.98-3.59-.23-.37a9.9 9.9 0 0 1-1.53-5.31c0-5.48 4.46-9.94 9.95-9.94c2.66 0 5.15 1.03 7.03 2.9a9.85 9.85 0 0 1 2.92 7.03c0 5.48-4.47 9.94-9.95 9.94Zm5.45-7.42c-.3-.15-1.79-.88-2.07-.98c-.28-.1-.48-.15-.68.15c-.2.3-.78.98-.95 1.18c-.18.2-.35.23-.65.08c-.3-.15-1.25-.46-2.39-1.47c-.89-.79-1.49-1.76-1.66-2.06c-.18-.3-.02-.46.13-.61c.14-.14.3-.35.45-.53c.15-.18.2-.3.3-.5c.1-.2.05-.38-.03-.53c-.08-.15-.68-1.65-.93-2.25c-.25-.61-.5-.52-.68-.53h-.58c-.2 0-.53.08-.8.38c-.28.3-1.05 1.03-1.05 2.51s1.08 2.92 1.23 3.12c.15.2 2.12 3.24 5.13 4.54c.72.31 1.28.49 1.72.62c.72.23 1.38.2 1.9.12c.58-.09 1.79-.73 2.05-1.44c.25-.71.25-1.31.18-1.44c-.08-.13-.28-.2-.58-.35Z"/></svg>
+  </a>
+
+  <script>
+    /* THEME */
+    const THEME_KEY = "dj_tibu_cruz_theme_v1";
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+
+    (function initTheme(){
+      const saved = localStorage.getItem(THEME_KEY);
+      if(saved === "light"){
+        body.classList.add("light");
+      }
+    })();
+
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("light");
+      localStorage.setItem(THEME_KEY, body.classList.contains("light") ? "light" : "dark");
+    });
+
+    /* MOBILE MENU */
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("open");
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("open");
+      });
+    });
+
+    /* PLAYER */
+    const audio = document.getElementById("radioPlayer");
+    const playBtn = document.getElementById("playBtn");
+    const playerStatus = document.getElementById("playerStatus");
+    let playing = false;
+
+    function toggleRadio(){
+      if(!playing){
+        audio.load();
+        audio.play().then(() => {
+          playing = true;
+          playBtn.textContent = "⏸ Detener radio";
+          playerStatus.textContent = "Reproduciendo en vivo...";
+        }).catch(() => {
+          playerStatus.textContent = "Toca nuevamente para iniciar la radio.";
+        });
+      } else {
+        audio.pause();
+        playing = false;
+        playBtn.textContent = "▶ Escuchar radio";
+        playerStatus.textContent = "La radio esta detenida.";
+      }
+    }
+
+    function shareRadio(){
+      const text = "Escucha DJ TIBU CRUZ | REAL SOUND";
+      const url = window.location.href;
+      if(navigator.share){
+        navigator.share({ title: "DJ TIBU CRUZ | REAL SOUND", text, url }).catch(() => {});
+      } else {
+        alert("Copiá y compartí:\\n" + text + "\\n" + url);
+      }
+    }
+
+    /* TIME */
+    function updateClock(){
+      const now = new Date();
+      const hora = now.toLocaleTimeString("es-AR", {
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit"
+      });
+      const fecha = now.toLocaleDateString("es-AR", {
+        weekday:"long",
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+      });
+
+      document.getElementById("horaActual").textContent = hora;
+      document.getElementById("fechaActual").textContent = fecha;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    /* OYENTES DINAMICOS */
+    const oyentesEl = document.getElementById("oyentesCount");
+    const OYENTES_KEY = "dj_tibu_cruz_oyentes_v1";
+
+    function clamp(n, min, max){
+      return Math.max(min, Math.min(max, n));
+    }
+
+    function getTargetRangeByHour(hour){
+      if(hour >= 0 && hour < 4) return { min: 68, max: 145 };
+      if(hour >= 4 && hour < 8) return { min: 80, max: 165 };
+      if(hour >= 8 && hour < 13) return { min: 140, max: 240 };
+      if(hour >= 13 && hour < 18) return { min: 170, max: 290 };
+      if(hour >= 18 && hour < 23) return { min: 220, max: 360 };
+      return { min: 120, max: 220 };
+    }
+
+    function nextOyentesValue(current, dateObj){
+      const hour = dateObj.getHours();
+      const range = getTargetRangeByHour(hour);
+      const mid = (range.min + range.max) / 2;
+      let step = Math.floor(Math.random() * 7) - 3;
+
+      if(current < range.min + 8) step = Math.max(step, 1);
+      if(current > range.max - 8) step = Math.min(step, -1);
+      if(current < mid - 30 && Math.random() < 0.55) step += 1;
+      if(current > mid + 30 && Math.random() < 0.55) step -= 1;
+      if(step === 0 && Math.random() < 0.35) step = current < mid ? 1 : -1;
+
+      return clamp(current + step, 45, 390);
+    }
+
+    function initOyentes(){
+      const now = Date.now();
+      const hour = new Date().getHours();
+      const range = getTargetRangeByHour(hour);
+
+      let state;
+      try {
+        state = JSON.parse(localStorage.getItem(OYENTES_KEY) || "null");
+      } catch(e){
+        state = null;
+      }
+
+      if(!state || typeof state.value !== "number"){
+        state = {
+          value: Math.floor((range.min + range.max) / 2),
+          ts: now
+        };
+        localStorage.setItem(OYENTES_KEY, JSON.stringify(state));
+      }
+
+      const elapsedMin = Math.floor((now - (state.ts || now)) / 60000);
+      let value = clamp(Math.round(state.value), 45, 390);
+
+      if(elapsedMin > 0){
+        for(let i = 0; i < Math.min(elapsedMin, 240); i++){
+          value = nextOyentesValue(value, new Date((state.ts || now) + (i + 1) * 60000));
+        }
+        state = { value, ts: now };
+        localStorage.setItem(OYENTES_KEY, JSON.stringify(state));
+      }
+
+      oyentesEl.textContent = value;
+    }
+
+    function tickOyentes(){
+      let state;
+      try {
+        state = JSON.parse(localStorage.getItem(OYENTES_KEY) || "null");
+      } catch(e){
+        state = null;
+      }
+      const now = Date.now();
+      let current = state && typeof state.value === "number" ? state.value : 180;
+      const next = nextOyentesValue(current, new Date(now));
+      localStorage.setItem(OYENTES_KEY, JSON.stringify({ value: next, ts: now }));
+      oyentesEl.textContent = next;
+    }
+
+    initOyentes();
+    setInterval(tickOyentes, 9000);
+
+    /* PEDIDOS DINAMICOS */
+    const pedidosData = [
+      {n:"Leo", z:"Wilde", t:"Bob Marley - Is This Love"},
+      {n:"Mica", z:"Quilmes", t:"Dread Mar I - Tu Sin Mi"},
+      {n:"Nico", z:"San Miguel", t:"Los Cafres - Tus Ojos"},
+      {n:"Cami", z:"Avellaneda", t:"Gondwana - Armonia De Amor"},
+      {n:"Tomi", z:"Pilar", t:"Nonpalidece - Dame Luz"},
+      {n:"Rocio", z:"Moron", t:"Damian Marley - Road To Zion"},
+      {n:"Bruno", z:"Lomas", t:"Los Pericos - Pupilas Lejanas"},
+      {n:"Sofi", z:"Lanus", t:"Kameleba - Todo Va A Estar Bien"},
+      {n:"Axel", z:"Ituzaingo", t:"Fidel Nadal - International Love"},
+      {n:"Noe", z:"Haedo", t:"Zona Ganjah - Vibra Positiva"},
+      {n:"Mati", z:"Merlo", t:"Resistencia Suburbana - Jah Guia"},
+      {n:"Luz", z:"Tigre", t:"Cultura Profetica - Para Estar"},
+      {n:"Joa", z:"Jose C. Paz", t:"Protoje - Who Knows"},
+      {n:"Mar", z:"Hurlingham", t:"Alborosie - Kingston Town"},
+      {n:"Franco", z:"San Justo", t:"Morodo - Divina Ciencia"}
+    ];
+
+    const pedidosList = document.getElementById("pedidosList");
+    let pedidosActuales = [];
+
+    function shuffleArray(arr){
+      const a = arr.slice();
+      for(let i = a.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function pick3Mixed(){
+      let pool = shuffleArray(pedidosData);
+      let selected = [];
+
+      for(let i = 0; i < pool.length && selected.length < 3; i++){
+        const item = pool[i];
+        const repeated = pedidosActuales.some(p => p.n === item.n && p.t === item.t);
+        if(!repeated) selected.push(item);
+      }
+
+      if(selected.length < 3){
+        pool = shuffleArray(pedidosData);
+        for(let i = 0; i < pool.length && selected.length < 3; i++){
+          const item = pool[i];
+          const exists = selected.some(s => s.n === item.n && s.t === item.t);
+          if(!exists) selected.push(item);
+        }
+      }
+
+      return selected;
+    }
+
+    function renderPedidosBlock(){
+      pedidosActuales = pick3Mixed();
+      pedidosList.innerHTML = "";
+
+      pedidosActuales.forEach((item, idx) => {
+        const row = document.createElement("div");
+        row.className = "pedido-item";
+        row.style.animationDelay = `${idx * 0.06}s`;
+        row.innerHTML = `
+          <div class="left">
+            <strong>${item.n} de ${item.z}</strong>
+            <span>Pidio: ${item.t}</span>
+          </div>
+          <div class="pedido-badge">Pedido musical</div>
+        `;
+        pedidosList.appendChild(row);
+      });
+    }
+
+    renderPedidosBlock();
+    setInterval(renderPedidosBlock, 9000);
+
+    /* FORM */
+    const temaForm = document.getElementById("temaForm");
+    const nombreOyente = document.getElementById("nombreOyente");
+    const numeroOyente = document.getElementById("numeroOyente");
+    const pedidoTema = document.getElementById("pedidoTema");
+    const FORM_KEY = "dj_tibu_cruz_form_v1";
+
+    (function loadSavedForm(){
+      try{
+        const data = JSON.parse(localStorage.getItem(FORM_KEY) || "{}");
+        if(data.nombre) nombreOyente.value = data.nombre;
+        if(data.numero) numeroOyente.value = data.numero;
+      } catch(e){}
+    })();
+
+    function saveFormLocal(){
+      const data = {
+        nombre: (nombreOyente.value || "").trim(),
+        numero: (numeroOyente.value || "").trim()
+      };
+      localStorage.setItem(FORM_KEY, JSON.stringify(data));
+    }
+
+    [nombreOyente, numeroOyente].forEach(el => {
+      el.addEventListener("input", saveFormLocal);
+      el.addEventListener("change", saveFormLocal);
+    });
+
+    temaForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      saveFormLocal();
+
+      const nombre = (nombreOyente.value || "").trim();
+      const numero = (numeroOyente.value || "").trim();
+      const pedido = (pedidoTema.value || "").trim();
+
+      if(!pedido){
+        pedidoTema.focus();
+        alert("Escribi el pedido musical antes de enviar.");
+        return;
+      }
+
+      const partes = [];
+      partes.push("Hola! Quiero pedir un tema en DJ TIBU CRUZ | REAL SOUND.");
+      if(nombre) partes.push(`Nombre: ${nombre}`);
+      if(numero) partes.push(`Numero: ${numero}`);
+      partes.push(`Pedido: ${pedido}`);
+
+      const texto = encodeURIComponent(partes.join("\\n"));
+      const waUrl = `https://wa.me/message/KPWJHN63WA3MA1?text=${texto}`;
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+    });
+
+    /* FOOTER SAFE WHATSAPP */
+    (function waNoTapeFooter(){
+      const waBtn = document.querySelector(".floating-wa");
+      const footer = document.querySelector(".footer");
+      if(!waBtn || !footer) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            waBtn.classList.add("footer-safe");
+          } else {
+            waBtn.classList.remove("footer-safe");
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0.15
+      });
+
+      observer.observe(footer);
+    })();
+
+    /* PWA */
+    if("serviceWorker" in navigator){
+      navigator.serviceWorker.register("/service-worker.js").catch(() => {});
+    }
+  </script>
+</body>
+</html>
