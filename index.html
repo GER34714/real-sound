@@ -36,6 +36,9 @@
       --shadow:0 0 24px rgba(255,225,0,.12);
       --radius:22px;
       --container:1180px;
+      --wa-safe-desktop:92px;
+      --wa-safe-tablet:106px;
+      --wa-safe-mobile:114px;
     }
 
     *{
@@ -46,17 +49,18 @@
     }
 
     html{
-      scroll-behavior:smooth;
-      overflow-x:hidden;
       width:100%;
+      max-width:100%;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
     }
 
     body{
-      font-family:'Poppins',sans-serif;
-      color:var(--text);
-      overflow-x:hidden;
       width:100%;
       max-width:100%;
+      overflow-x:hidden;
+      font-family:'Poppins',sans-serif;
+      color:var(--text);
       background-image:
         linear-gradient(rgba(0,0,0,.68), rgba(0,0,0,.76)),
         url("https://iili.io/q6c9Hpn.jpg");
@@ -194,6 +198,7 @@
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
+      max-width:220px;
     }
 
     .nav-right{
@@ -422,7 +427,7 @@
     }
 
     .hero-logo-wrap{
-      width:min(100%, 460px);
+      width:min(100%, 430px);
       aspect-ratio:1/1;
       border-radius:28px;
       background:
@@ -735,7 +740,7 @@
     }
 
     .footer{
-      padding:28px 0 120px;
+      padding:28px 0 104px;
       position:relative;
       z-index:2;
     }
@@ -771,7 +776,7 @@
     }
 
     .floating-wa:hover{transform:translateY(-2px)}
-    .floating-wa.footer-safe{bottom:94px}
+    .floating-wa.footer-safe{bottom:var(--wa-safe-desktop)}
 
     .floating-wa svg{
       width:28px;
@@ -788,17 +793,9 @@
         transform .65s cubic-bezier(.22,.61,.36,1);
     }
 
-    .reveal-left{
-      transform:translate3d(-28px,0,0);
-    }
-
-    .reveal-right{
-      transform:translate3d(28px,0,0);
-    }
-
-    .reveal-up{
-      transform:translate3d(0,26px,0);
-    }
+    .reveal-left{transform:translate3d(-24px,0,0)}
+    .reveal-right{transform:translate3d(24px,0,0)}
+    .reveal-up{transform:translate3d(0,24px,0)}
 
     .reveal.show{
       opacity:1;
@@ -824,9 +821,17 @@
       .cards-3{
         grid-template-columns:1fr;
       }
+
+      .floating-wa.footer-safe{
+        bottom:var(--wa-safe-tablet);
+      }
     }
 
     @media (max-width: 780px){
+      .container{
+        width:min(var(--container), calc(100% - 24px));
+      }
+
       .menu-toggle{
         display:grid;
         place-items:center;
@@ -836,7 +841,7 @@
         position:absolute;
         left:0;
         right:0;
-        top:78px;
+        top:calc(100% + 10px);
         display:none;
         flex-direction:column;
         align-items:stretch;
@@ -857,12 +862,8 @@
         background:rgba(255,255,255,.03);
       }
 
-      .request-grid{
-        grid-template-columns:1fr;
-      }
-
       .hero{
-        padding-top:20px;
+        padding-top:18px;
       }
 
       .hero-card,
@@ -873,7 +874,35 @@
         padding:20px;
       }
 
+      .hero-card{
+        gap:16px;
+      }
+
+      .hero-chip-row{
+        gap:8px;
+        margin-bottom:12px;
+      }
+
+      .hero h1{
+        font-size:1.95rem;
+        margin-bottom:10px;
+      }
+
+      .hero p{
+        font-size:.95rem;
+        line-height:1.55;
+      }
+
+      .hero-logo-wrap{
+        width:min(100%, 300px);
+        padding:14px;
+      }
+
       .info-bar{
+        grid-template-columns:1fr;
+      }
+
+      .request-grid{
         grid-template-columns:1fr;
       }
 
@@ -888,18 +917,26 @@
       }
 
       .pedido-item{
-        align-items:flex-start;
         flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+        padding:14px 15px;
       }
 
       .pedido-item span{
         white-space:normal;
         overflow:visible;
         text-overflow:unset;
+        line-height:1.45;
+      }
+
+      .pedido-badge{
+        font-size:.74rem;
+        padding:7px 11px;
       }
 
       .brand-text span{
-        max-width:180px;
+        max-width:160px;
       }
 
       .floating-wa{
@@ -910,27 +947,25 @@
       }
 
       .floating-wa.footer-safe{
-        bottom:118px;
+        bottom:var(--wa-safe-mobile);
       }
 
       .footer{
-        padding-bottom:132px;
+        padding-bottom:120px;
       }
 
-      .reveal-left{
-        transform:translate3d(-18px,0,0);
-      }
-
-      .reveal-right{
-        transform:translate3d(18px,0,0);
-      }
-
-      .container{
-        width:min(var(--container), calc(100% - 24px));
+      .reveal-left,
+      .reveal-right,
+      .reveal-up{
+        transform:translate3d(0,18px,0);
       }
     }
 
     @media (max-width: 560px){
+      .container{
+        width:calc(100% - 20px);
+      }
+
       .brand-logo{
         width:46px;
         height:46px;
@@ -940,8 +975,25 @@
         font-size:.92rem;
       }
 
+      .brand-text span{
+        font-size:.74rem;
+        max-width:130px;
+      }
+
+      .hero-card,
+      .section,
+      .player-panel,
+      .mini-panel,
+      .cta-card{
+        padding:18px;
+      }
+
+      .hero{
+        padding-top:14px;
+      }
+
       .hero h1{
-        font-size:1.9rem;
+        font-size:1.78rem;
       }
 
       .section-title{
@@ -949,7 +1001,13 @@
       }
 
       .hero-logo-wrap{
+        width:min(100%, 250px);
         border-radius:22px;
+      }
+
+      .chip{
+        font-size:.78rem;
+        padding:7px 11px;
       }
 
       .floating-wa{
@@ -960,7 +1018,7 @@
       }
 
       .floating-wa.footer-safe{
-        bottom:126px;
+        bottom:var(--wa-safe-mobile);
       }
 
       .floating-wa svg{
@@ -969,28 +1027,7 @@
       }
 
       .footer{
-        padding-bottom:138px;
-      }
-
-      .section,
-      .hero-card,
-      .player-panel,
-      .mini-panel,
-      .cta-card{
-        padding:18px;
-      }
-
-      .container{
-        width:calc(100% - 20px);
-      }
-
-      .hero-chip-row{
-        gap:8px;
-      }
-
-      .chip{
-        font-size:.8rem;
-        padding:7px 12px;
+        padding-bottom:118px;
       }
     }
 
@@ -1156,7 +1193,7 @@
           <div class="field full">
             <button type="submit" class="btn btn-secondary" style="width:100%;">Enviar pedido por WhatsApp</button>
             <div class="helper">
-              Pedi tu tema, mandá tu saludo y se parte del clima de REAL SOUND.
+              Pedi tu tema, manda tu saludo y se parte del clima de REAL SOUND.
             </div>
           </div>
         </form>
@@ -1305,7 +1342,7 @@
       if(navigator.share){
         navigator.share({ title: "REAL SOUND", text, url }).catch(() => {});
       } else {
-        alert("Copiá y compartí:\n" + text + "\n" + url);
+        alert("Copia y comparti:\n" + text + "\n" + url);
       }
     }
 
@@ -1584,8 +1621,8 @@
         const overlapStart = viewportHeight - footerRect.top;
 
         if(overlapStart > 0){
-          const extraSpace = Math.max(0, overlapStart + 18);
-          const mobileExtra = window.innerWidth <= 560 ? 126 : window.innerWidth <= 780 ? 118 : 94;
+          const extraSpace = Math.max(0, overlapStart + 10);
+          const mobileExtra = window.innerWidth <= 780 ? parseInt(getComputedStyle(document.documentElement).getPropertyValue("--wa-safe-mobile")) : window.innerWidth <= 1024 ? parseInt(getComputedStyle(document.documentElement).getPropertyValue("--wa-safe-tablet")) : parseInt(getComputedStyle(document.documentElement).getPropertyValue("--wa-safe-desktop"));
           waBtn.style.bottom = `${mobileExtra + extraSpace}px`;
           waBtn.classList.add("footer-safe");
         } else {
