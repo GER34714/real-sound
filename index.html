@@ -36,9 +36,7 @@
       --shadow:0 0 24px rgba(255,225,0,.12);
       --radius:22px;
       --container:1180px;
-      --wa-safe-desktop:92px;
-      --wa-safe-tablet:106px;
-      --wa-safe-mobile:114px;
+      --bg-image:url("https://iili.io/q6c9Hpn.jpg");
     }
 
     *{
@@ -53,6 +51,7 @@
       max-width:100%;
       overflow-x:hidden;
       scroll-behavior:smooth;
+      background:#000;
     }
 
     body{
@@ -61,14 +60,31 @@
       overflow-x:hidden;
       font-family:'Poppins',sans-serif;
       color:var(--text);
-      background-image:
-        linear-gradient(rgba(0,0,0,.68), rgba(0,0,0,.76)),
-        url("https://iili.io/q6c9Hpn.jpg");
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      background-attachment:fixed;
       min-height:100vh;
+      background:#050505;
+      position:relative;
+      isolation:isolate;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background-image:var(--bg-image);
+      background-repeat:no-repeat;
+      background-position:center center;
+      background-size:contain;
+      background-color:#000;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      background:linear-gradient(rgba(0,0,0,.60), rgba(0,0,0,.72));
+      pointer-events:none;
     }
 
     body.light{
@@ -80,13 +96,11 @@
       --text:#111111;
       --muted:#4f4f4f;
       --shadow:0 12px 36px rgba(0,0,0,.08);
-      background-image:
-        linear-gradient(rgba(255,255,255,.70), rgba(255,255,255,.78)),
-        url("https://iili.io/q6c9Hpn.jpg");
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      background-attachment:fixed;
+      background:#f3f3f3;
+    }
+
+    body.light::after{
+      background:linear-gradient(rgba(255,255,255,.62), rgba(255,255,255,.76));
     }
 
     main, section, header, footer, div{
@@ -740,7 +754,7 @@
     }
 
     .footer{
-      padding:28px 0 104px;
+      padding:28px 0 40px;
       position:relative;
       z-index:2;
     }
@@ -771,12 +785,18 @@
       background:#25D366;
       box-shadow:0 14px 26px rgba(37,211,102,.32);
       border:1px solid rgba(255,255,255,.18);
-      transition:bottom .28s ease, transform .18s ease;
+      transition:opacity .22s ease, transform .18s ease, visibility .22s ease;
       flex-shrink:0;
     }
 
     .floating-wa:hover{transform:translateY(-2px)}
-    .floating-wa.footer-safe{bottom:var(--wa-safe-desktop)}
+
+    .floating-wa.is-hidden{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transform:translateY(8px);
+    }
 
     .floating-wa svg{
       width:28px;
@@ -803,9 +823,8 @@
     }
 
     @media (max-width: 1024px){
-      body,
-      body.light{
-        background-attachment:scroll;
+      body::before{
+        background-size:contain;
       }
 
       .hero-card,
@@ -820,10 +839,6 @@
 
       .cards-3{
         grid-template-columns:1fr;
-      }
-
-      .floating-wa.footer-safe{
-        bottom:var(--wa-safe-tablet);
       }
     }
 
@@ -946,14 +961,6 @@
         height:54px;
       }
 
-      .floating-wa.footer-safe{
-        bottom:var(--wa-safe-mobile);
-      }
-
-      .footer{
-        padding-bottom:120px;
-      }
-
       .reveal-left,
       .reveal-right,
       .reveal-up{
@@ -1017,17 +1024,9 @@
         bottom:12px;
       }
 
-      .floating-wa.footer-safe{
-        bottom:var(--wa-safe-mobile);
-      }
-
       .floating-wa svg{
         width:26px;
         height:26px;
-      }
-
-      .footer{
-        padding-bottom:118px;
       }
     }
 
@@ -1277,7 +1276,7 @@
     </div>
   </footer>
 
-  <a class="floating-wa" href="https://wa.me/message/KPWJHN63WA3MA1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <a class="floating-wa" id="floatingWa" href="https://wa.me/message/KPWJHN63WA3MA1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.47 0 .09 5.36.09 11.96c0 2.11.55 4.18 1.6 6.01L0 24l6.2-1.62a11.92 11.92 0 0 0 5.87 1.5h.01c6.59 0 11.97-5.36 11.97-11.96c0-3.2-1.25-6.2-3.53-8.44ZM12.08 21.86h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.68.96.98-3.59-.23-.37a9.9 9.9 0 0 1-1.53-5.31c0-5.48 4.46-9.94 9.95-9.94c2.66 0 5.15 1.03 7.03 2.9a9.85 9.85 0 0 1 2.92 7.03c0 5.48-4.47 9.94-9.95 9.94Zm5.45-7.42c-.3-.15-1.79-.88-2.07-.98c-.28-.1-.48-.15-.68.15c-.2.3-.78.98-.95 1.18c-.18.2-.35.23-.65.08c-.3-.15-1.25-.46-2.39-1.47c-.89-.79-1.49-1.76-1.66-2.06c-.18-.3-.02-.46.13-.61c.14-.14.3-.35.45-.53c.15-.18.2-.3.3-.5c.1-.2.05-.38-.03-.53c-.08-.15-.68-1.65-.93-2.25c-.25-.61-.5-.52-.68-.53h-.58c-.2 0-.53.08-.8.38c-.28.3-1.05 1.03-1.05 2.51s1.08 2.92 1.23 3.12c.15.2 2.12 3.24 5.13 4.54c.72.31 1.28.49 1.72.62c.72.23 1.38.2 1.9.12c.58-.09 1.79-.73 2.05-1.44c.25-.71.25-1.31.18-1.44c-.08-.13-.28-.2-.58-.35Z"/></svg>
   </a>
 
@@ -1610,30 +1609,24 @@
       window.open(waUrl, "_blank", "noopener,noreferrer");
     });
 
-    (function waNoTapeFooter(){
-      const waBtn = document.querySelector(".floating-wa");
+    (function hideWaOnFooter(){
+      const waBtn = document.getElementById("floatingWa");
       const footer = document.querySelector(".footer");
       if(!waBtn || !footer) return;
 
-      const setFooterSafe = () => {
-        const footerRect = footer.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        const overlapStart = viewportHeight - footerRect.top;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            waBtn.classList.add("is-hidden");
+          } else {
+            waBtn.classList.remove("is-hidden");
+          }
+        });
+      }, {
+        threshold: 0.05
+      });
 
-        if(overlapStart > 0){
-          const extraSpace = Math.max(0, overlapStart + 10);
-          const mobileExtra = window.innerWidth <= 780 ? parseInt(getComputedStyle(document.documentElement).getPropertyValue("--wa-safe-mobile")) : window.innerWidth <= 1024 ? parseInt(getComputedStyle(document.documentElement).getPropertyValue("--wa-safe-tablet")) : parseInt(getComputedStyle(document.documentElement).getPropertyValue("--wa-safe-desktop"));
-          waBtn.style.bottom = `${mobileExtra + extraSpace}px`;
-          waBtn.classList.add("footer-safe");
-        } else {
-          waBtn.style.bottom = "";
-          waBtn.classList.remove("footer-safe");
-        }
-      };
-
-      setFooterSafe();
-      window.addEventListener("scroll", setFooterSafe, { passive:true });
-      window.addEventListener("resize", setFooterSafe);
+      observer.observe(footer);
     })();
 
     (function initReveal(){
