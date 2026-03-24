@@ -608,7 +608,9 @@
     }
 
     .footer{
-      padding:28px 0 110px;
+      padding:28px 0 120px;
+      position:relative;
+      z-index:2;
     }
     .footer-card{
       padding:18px 20px;
@@ -634,7 +636,7 @@
       background:#25D366;
       box-shadow:0 14px 26px rgba(37,211,102,.32);
       border:1px solid rgba(255,255,255,.18);
-      transition:bottom .22s ease, transform .18s ease;
+      transition:bottom .28s ease, transform .18s ease;
     }
     .floating-wa:hover{transform:translateY(-2px)}
     .floating-wa.footer-safe{bottom:94px}
@@ -643,6 +645,27 @@
       height:28px;
       fill:#fff;
       display:block;
+    }
+
+    .reveal{
+      opacity:0;
+      will-change:transform, opacity;
+      transition:
+        opacity .75s ease,
+        transform .75s cubic-bezier(.22,.61,.36,1);
+    }
+    .reveal-left{
+      transform:translate3d(-70px,0,0);
+    }
+    .reveal-right{
+      transform:translate3d(70px,0,0);
+    }
+    .reveal-up{
+      transform:translate3d(0,36px,0);
+    }
+    .reveal.show{
+      opacity:1;
+      transform:translate3d(0,0,0);
     }
 
     @media (max-width: 1024px){
@@ -717,6 +740,24 @@
       .brand-text span{
         max-width:180px;
       }
+      .floating-wa{
+        right:12px;
+        bottom:14px;
+        width:54px;
+        height:54px;
+      }
+      .floating-wa.footer-safe{
+        bottom:118px;
+      }
+      .footer{
+        padding-bottom:132px;
+      }
+      .reveal-left{
+        transform:translate3d(-46px,0,0);
+      }
+      .reveal-right{
+        transform:translate3d(46px,0,0);
+      }
     }
 
     @media (max-width: 560px){
@@ -735,6 +776,37 @@
       }
       .hero-logo-wrap{
         border-radius:22px;
+      }
+      .floating-wa{
+        width:52px;
+        height:52px;
+        right:10px;
+        bottom:12px;
+      }
+      .floating-wa.footer-safe{
+        bottom:126px;
+      }
+      .floating-wa svg{
+        width:26px;
+        height:26px;
+      }
+      .footer{
+        padding-bottom:138px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .reveal,
+      .pedido-item,
+      .floating-wa,
+      .btn,
+      .menu-toggle span{
+        transition:none !important;
+        animation:none !important;
+      }
+      .reveal{
+        opacity:1 !important;
+        transform:none !important;
       }
     }
   </style>
@@ -770,7 +842,7 @@
   <main id="inicio">
     <section class="hero">
       <div class="container">
-        <div class="hero-card glass">
+        <div class="hero-card glass reveal reveal-left">
           <div class="hero-copy">
             <div class="hero-chip-row">
               <div class="chip live"><span class="dot"></span> En vivo</div>
@@ -791,7 +863,7 @@
             </div>
           </div>
 
-          <div class="hero-visual">
+          <div class="hero-visual reveal reveal-right">
             <div class="hero-logo-wrap">
               <img src="https://iili.io/q655Cn2.md.png" alt="Logo REAL SOUND" />
             </div>
@@ -799,19 +871,19 @@
         </div>
 
         <div class="info-bar">
-          <div class="info-box">
+          <div class="info-box reveal reveal-left">
             <div class="label">Oyentes en este momento</div>
             <div class="value"><strong id="oyentesCount">248</strong> conectados</div>
           </div>
-          <div class="info-box">
+          <div class="info-box reveal reveal-right">
             <div class="label">Clima</div>
             <div class="value">Vibra encendida</div>
           </div>
-          <div class="info-box">
+          <div class="info-box reveal reveal-left">
             <div class="label">Hora actual</div>
             <div class="value" id="horaActual">--:--:--</div>
           </div>
-          <div class="info-box">
+          <div class="info-box reveal reveal-right">
             <div class="label">Momento</div>
             <div class="value" id="fechaActual">Cargando...</div>
           </div>
@@ -821,7 +893,7 @@
 
     <section class="container" id="radio">
       <div class="player-grid">
-        <div class="player-panel glass">
+        <div class="player-panel glass reveal reveal-left">
           <h2 class="section-title">Una sintonia para sentir</h2>
           <p class="section-sub">
             No es solo musica. Es compania, energia y una forma de conectar con una atmosfera distinta. REAL SOUND acompaña, levanta el animo y transforma cada pedido en parte del momento.
@@ -841,14 +913,14 @@
         </div>
 
         <div class="side-cards">
-          <div class="mini-panel glass">
+          <div class="mini-panel glass reveal reveal-right">
             <h3>Buena onda real</h3>
             <p>
               Una propuesta con alma, con personalidad y con esa energia roots que se siente desde el primer momento.
             </p>
           </div>
 
-          <div class="mini-panel glass">
+          <div class="mini-panel glass reveal reveal-right">
             <h3>La gente tambien suena</h3>
             <p>
               Cada pedido suma, cada saludo acompaña y cada persona que escucha forma parte del clima de REAL SOUND.
@@ -859,7 +931,7 @@
     </section>
 
     <section class="container" id="pedidos">
-      <div class="section glass">
+      <div class="section glass reveal reveal-left">
         <h2 class="section-title">Pedi tu tema</h2>
         <p class="section-sub">
           Elegi la cancion que queres escuchar y sumate a la vibra. REAL SOUND se vive mejor cuando la gente participa y pone su propio sonido en el aire.
@@ -892,7 +964,7 @@
     </section>
 
     <section class="container">
-      <div class="section glass">
+      <div class="section glass reveal reveal-right">
         <h2 class="section-title">Sonidos que llegan</h2>
         <p class="section-sub">
           Una muestra de la gente que se suma, participa y acompaña esta sintonia con sus temas y su energia.
@@ -903,28 +975,28 @@
     </section>
 
     <section class="container" id="sonido">
-      <div class="section glass">
+      <div class="section glass reveal reveal-left">
         <h2 class="section-title">La esencia de REAL SOUND</h2>
         <p class="section-sub">
           REAL SOUND representa buena vibra, presencia, musica con identidad y una energia que busca conectar de verdad con quien escucha.
         </p>
 
         <div class="cards-3">
-          <article class="feature-card">
+          <article class="feature-card reveal reveal-left">
             <h3>Identidad</h3>
             <p>
               Un estilo propio, una imagen fuerte y una presencia que transmite personalidad desde el primer vistazo.
             </p>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card reveal reveal-up">
             <h3>Conexion</h3>
             <p>
               Una sintonia pensada para compartir momentos, acompañar el dia o la noche y hacer sentir a la gente parte de algo.
             </p>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card reveal reveal-right">
             <h3>Vibra</h3>
             <p>
               Sonido, roots, buena energia y una atmosfera que invita a quedarse, escuchar y dejarse llevar por el clima.
@@ -936,7 +1008,7 @@
 
     <section class="container" id="contacto">
       <div class="cta-final">
-        <div class="cta-card glass">
+        <div class="cta-card glass reveal reveal-left">
           <h2>Conectate con<br>REAL SOUND</h2>
           <p>
             Si queres sumarte con un pedido, mandar un saludo o compartir esta sintonia con alguien mas, escribi directo por WhatsApp y segui siendo parte de esta energia.
@@ -948,7 +1020,7 @@
           </div>
         </div>
 
-        <div class="cta-card glass">
+        <div class="cta-card glass reveal reveal-right">
           <div class="cta-list">
             <div>Buena vibra</div>
             <div>Musica con identidad</div>
@@ -962,7 +1034,7 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-card glass">
+      <div class="footer-card glass reveal reveal-up">
         Creado y diseñado por <a href="https://ciborg347oficial.onrender.com" target="_blank" rel="noopener noreferrer">Ciborg 347</a>
       </div>
     </div>
@@ -1306,20 +1378,45 @@
       const footer = document.querySelector(".footer");
       if(!waBtn || !footer) return;
 
+      const setFooterSafe = () => {
+        const footerRect = footer.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const overlapStart = viewportHeight - footerRect.top;
+
+        if(overlapStart > 0){
+          const extraSpace = Math.max(0, overlapStart + 18);
+          const mobileExtra = window.innerWidth <= 560 ? 126 : window.innerWidth <= 780 ? 118 : 94;
+          waBtn.style.bottom = `${mobileExtra + extraSpace}px`;
+          waBtn.classList.add("footer-safe");
+        } else {
+          waBtn.style.bottom = "";
+          waBtn.classList.remove("footer-safe");
+        }
+      };
+
+      setFooterSafe();
+      window.addEventListener("scroll", setFooterSafe, { passive:true });
+      window.addEventListener("resize", setFooterSafe);
+    })();
+
+    (function initReveal(){
+      const revealEls = document.querySelectorAll(".reveal");
+      if(!revealEls.length) return;
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if(entry.isIntersecting){
-            waBtn.classList.add("footer-safe");
+            entry.target.classList.add("show");
           } else {
-            waBtn.classList.remove("footer-safe");
+            entry.target.classList.remove("show");
           }
         });
       }, {
-        root: null,
-        threshold: 0.15
+        threshold: 0.14,
+        rootMargin: "0px 0px -8% 0px"
       });
 
-      observer.observe(footer);
+      revealEls.forEach(el => observer.observe(el));
     })();
 
     if("serviceWorker" in navigator){
