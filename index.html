@@ -1,1657 +1,837 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>REAL SOUND</title>
-
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" type="image/png" href="https://iili.io/q655Cn2.md.png" />
-  <link rel="apple-touch-icon" href="https://iili.io/q655Cn2.md.png" />
-  <meta name="theme-color" content="#0d0d0d" />
-
-  <meta name="description" content="REAL SOUND. Vibra, musica, pedidos y buena energia en una sola sintonia." />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="REAL SOUND" />
-  <meta property="og:description" content="Una sintonia con identidad propia, buena vibra, musica y pedidos para compartir el momento." />
-  <meta property="og:image" content="https://iili.io/q655Cn2.md.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <style>
-    :root{
-      --bg:#050505;
-      --bg2:#101010;
-      --card:rgba(14,14,14,.78);
-      --card-2:rgba(20,20,20,.72);
-      --line:rgba(255,230,0,.18);
-      --text:#f7f7f7;
-      --muted:#d9d9d9;
-      --yellow:#ffe100;
-      --green:#24d34a;
-      --red:#ff3b1f;
-      --orange:#ff7b00;
-      --shadow:0 0 24px rgba(255,225,0,.12);
-      --radius:22px;
-      --container:1180px;
-      --bg-image:url("https://iili.io/q6c9Hpn.jpg");
-    }
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      min-width:0;
-    }
-
-    html{
-      width:100%;
-      max-width:100%;
-      overflow-x:hidden;
-      scroll-behavior:smooth;
-      background:#000;
-    }
-
-    body{
-      width:100%;
-      max-width:100%;
-      overflow-x:hidden;
-      font-family:'Poppins',sans-serif;
-      color:var(--text);
-      min-height:100vh;
-      background:#050505;
-      position:relative;
-      isolation:isolate;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-2;
-      background-image:var(--bg-image);
-      background-repeat:no-repeat;
-      background-position:center center;
-      background-size:contain;
-      background-color:#000;
-    }
-
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-1;
-      background:linear-gradient(rgba(0,0,0,.60), rgba(0,0,0,.72));
-      pointer-events:none;
-    }
-
-    body.light{
-      --bg:#f6f6f6;
-      --bg2:#ffffff;
-      --card:rgba(255,255,255,.82);
-      --card-2:rgba(255,255,255,.76);
-      --line:rgba(0,0,0,.08);
-      --text:#111111;
-      --muted:#4f4f4f;
-      --shadow:0 12px 36px rgba(0,0,0,.08);
-      background:#f3f3f3;
-    }
-
-    body.light::after{
-      background:linear-gradient(rgba(255,255,255,.62), rgba(255,255,255,.76));
-    }
-
-    main, section, header, footer, div{
-      max-width:100%;
-    }
-
-    a{text-decoration:none;color:inherit}
-    img{display:block;max-width:100%;height:auto}
-    button,input,textarea{font:inherit}
-
-    .container{
-      width:min(var(--container), calc(100% - 32px));
-      margin-inline:auto;
-    }
-
-    .glass{
-      background:var(--card);
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      border-radius:var(--radius);
-      overflow:hidden;
-    }
-
-    .section{
-      padding:28px;
-      margin-top:18px;
-    }
-
-    .section-title{
-      font-family:'Montserrat',sans-serif;
-      font-size:1.5rem;
-      font-weight:800;
-      margin-bottom:8px;
-      line-height:1.1;
-      word-break:break-word;
-    }
-
-    .section-sub{
-      color:var(--muted);
-      line-height:1.55;
-      font-size:.97rem;
-      max-width:780px;
-    }
-
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:100;
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-      background:rgba(0,0,0,.55);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-
-    body.light .site-header{
-      background:rgba(255,255,255,.72);
-      border-bottom:1px solid rgba(0,0,0,.06);
-    }
-
-    .nav-wrap{
-      width:min(var(--container), calc(100% - 24px));
-      margin-inline:auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding:14px 0;
-      position:relative;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
-      max-width:100%;
-    }
-
-    .brand-logo{
-      width:52px;
-      height:52px;
-      object-fit:contain;
-      border-radius:50%;
-      background:#000;
-      padding:4px;
-      box-shadow:0 0 16px rgba(255,225,0,.18);
-      flex-shrink:0;
-    }
-
-    .brand-text{
-      min-width:0;
-    }
-
-    .brand-text strong{
-      display:block;
-      font-family:'Montserrat',sans-serif;
-      font-size:1rem;
-      line-height:1;
-      letter-spacing:.4px;
-    }
-
-    .brand-text span{
-      display:block;
-      color:var(--muted);
-      font-size:.78rem;
-      margin-top:4px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width:220px;
-    }
-
-    .nav-right{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-shrink:0;
-    }
-
-    .theme-toggle{
-      width:44px;
-      height:44px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:var(--card-2);
-      color:var(--text);
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-      flex-shrink:0;
-    }
-
-    .menu-toggle{
-      display:none;
-      width:46px;
-      height:46px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:var(--card-2);
-      color:var(--text);
-      cursor:pointer;
-      position:relative;
-      flex-shrink:0;
-    }
-
-    .menu-toggle span{
-      position:absolute;
-      left:11px;
-      right:11px;
-      height:2px;
-      background:currentColor;
-      border-radius:999px;
-      transition:.25s ease;
-    }
-
-    .menu-toggle span:nth-child(1){top:14px}
-    .menu-toggle span:nth-child(2){top:22px}
-    .menu-toggle span:nth-child(3){top:30px}
-
-    .menu-toggle.active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
-    .menu-toggle.active span:nth-child(2){opacity:0}
-    .menu-toggle.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
-
-    .nav-links a{
-      padding:10px 14px;
-      border-radius:999px;
-      color:var(--muted);
-      transition:.2s ease;
-      font-size:.94rem;
-      white-space:nowrap;
-    }
-
-    .nav-links a:hover{
-      color:var(--text);
-      background:rgba(255,255,255,.05);
-    }
-
-    .hero{
-      padding:34px 0 12px;
-      overflow:hidden;
-    }
-
-    .hero-card{
-      display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:22px;
-      align-items:center;
-      padding:28px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:auto -120px -120px auto;
-      width:280px;
-      height:280px;
-      background:radial-gradient(circle, rgba(255,225,0,.08), transparent 60%);
-      pointer-events:none;
-    }
-
-    .hero-copy{
-      text-align:left;
-      position:relative;
-      z-index:2;
-      min-width:0;
-    }
-
-    .hero-chip-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-bottom:14px;
-    }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      color:var(--text);
-      font-size:.84rem;
-      font-weight:600;
-      max-width:100%;
-    }
-
-    .chip.live .dot{
-      width:9px;
-      height:9px;
-      border-radius:50%;
-      background:#ff2d2d;
-      box-shadow:0 0 12px rgba(255,0,0,.55);
-      animation:pulse 1.1s infinite;
-      flex-shrink:0;
-    }
-
-    @keyframes pulse{
-      0%{transform:scale(.9);opacity:.7}
-      50%{transform:scale(1.25);opacity:1}
-      100%{transform:scale(.9);opacity:.7}
-    }
-
-    .hero h1{
-      font-family:'Montserrat',sans-serif;
-      font-size:clamp(2rem, 4vw, 4.1rem);
-      line-height:.98;
-      font-weight:800;
-      margin-bottom:12px;
-      text-transform:uppercase;
-      letter-spacing:.5px;
-      word-break:break-word;
-    }
-
-    .hero h1 .accent{
-      color:var(--yellow);
-      text-shadow:0 0 14px rgba(255,225,0,.22);
-    }
-
-    .hero p{
-      color:#f2f2f2;
-      line-height:1.65;
-      font-size:1rem;
-      max-width:640px;
-      text-shadow:0 2px 10px rgba(0,0,0,.35);
-    }
-
-    body.light .hero p{
-      color:#1c1c1c;
-      text-shadow:none;
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:22px;
-      max-width:100%;
-    }
-
-    .btn{
-      border:none;
-      border-radius:999px;
-      padding:14px 20px;
-      font-weight:700;
-      font-size:.96rem;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      cursor:pointer;
-      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
-      text-align:center;
-      max-width:100%;
-    }
-
-    .btn:hover{transform:translateY(-2px)}
-    .btn:active{transform:translateY(0)}
-
-    .btn-primary{
-      background:linear-gradient(135deg, var(--yellow), #ffb300);
-      color:#131313;
-      box-shadow:0 12px 26px rgba(255,179,0,.22);
-    }
-
-    .btn-secondary{
-      background:linear-gradient(135deg, var(--green), #1da34d);
-      color:#071209;
-      box-shadow:0 12px 26px rgba(37,211,102,.18);
-    }
-
-    .btn-ghost{
-      background:rgba(255,255,255,.08);
-      color:var(--text);
-      border:1px solid rgba(255,255,255,.14);
-    }
-
-    .hero-visual{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
-      z-index:2;
-      min-width:0;
-      max-width:100%;
-    }
-
-    .hero-logo-wrap{
-      width:min(100%, 430px);
-      aspect-ratio:1/1;
-      border-radius:28px;
-      background:
-        radial-gradient(circle at center, rgba(255,225,0,.12), transparent 46%),
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow:0 20px 50px rgba(0,0,0,.30);
-      display:grid;
-      place-items:center;
-      padding:18px;
-      overflow:hidden;
-    }
-
-    .hero-logo-wrap img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      filter:drop-shadow(0 0 28px rgba(255,225,0,.16));
-    }
-
-    .info-bar{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0,1fr));
-      gap:12px;
-      margin-top:18px;
-    }
-
-    .info-box{
-      padding:16px;
-      border-radius:18px;
-      background:var(--card);
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      text-align:left;
-      min-width:0;
-    }
-
-    .info-box .label{
-      font-size:.78rem;
-      color:var(--muted);
-      margin-bottom:6px;
-    }
-
-    .info-box .value{
-      font-size:1rem;
-      font-weight:700;
-      color:var(--text);
-      line-height:1.25;
-      word-break:break-word;
-    }
-
-    .info-box .value strong{
-      color:var(--yellow);
-      font-size:1.15rem;
-    }
-
-    .player-grid{
-      display:grid;
-      grid-template-columns:minmax(0,1fr) 360px;
-      gap:18px;
-      align-items:start;
-    }
-
-    .player-panel{
-      padding:24px;
-      min-width:0;
-    }
-
-    .audio-wrap{
-      margin-top:18px;
-      max-width:100%;
-    }
-
-    audio{
-      width:100%;
-      max-width:100%;
-      border-radius:14px;
-      overflow:hidden;
-    }
-
-    .status{
-      margin-top:12px;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-
-    .player-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:16px;
-      max-width:100%;
-    }
-
-    .side-cards{
-      display:grid;
-      gap:18px;
-      min-width:0;
-    }
-
-    .mini-panel{
-      padding:22px;
-      min-width:0;
-    }
-
-    .mini-panel h3{
-      font-family:'Montserrat',sans-serif;
-      font-size:1.06rem;
-      margin-bottom:8px;
-      word-break:break-word;
-    }
-
-    .mini-panel p{
-      color:var(--muted);
-      line-height:1.55;
-      font-size:.93rem;
-    }
-
-    .request-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-top:18px;
-      min-width:0;
-    }
-
-    .field{
-      text-align:left;
-      min-width:0;
-    }
-
-    .field.full{
-      grid-column:1/-1;
-    }
-
-    .field label{
-      display:block;
-      margin-bottom:7px;
-      font-size:.88rem;
-      font-weight:600;
-    }
-
-    .field input,
-    .field textarea{
-      width:100%;
-      max-width:100%;
-      padding:14px 16px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      outline:none;
-      transition:border-color .18s ease, box-shadow .18s ease;
-    }
-
-    .field input::placeholder,
-    .field textarea::placeholder{
-      color:#9d9d9d;
-    }
-
-    .field textarea{
-      min-height:120px;
-      resize:vertical;
-    }
-
-    .field input:focus,
-    .field textarea:focus{
-      border-color:rgba(255,225,0,.35);
-      box-shadow:0 0 0 4px rgba(255,225,0,.08);
-    }
-
-    .helper{
-      color:var(--muted);
-      font-size:.86rem;
-      line-height:1.5;
-      margin-top:10px;
-    }
-
-    .pedidos-list{
-      display:grid;
-      gap:12px;
-      margin-top:18px;
-      min-width:0;
-    }
-
-    .pedido-item{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:14px;
-      padding:16px 18px;
-      border-radius:18px;
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.08);
-      animation:fadeUp .35s ease both;
-      min-width:0;
-      max-width:100%;
-    }
-
-    @keyframes fadeUp{
-      from{opacity:0;transform:translateY(10px)}
-      to{opacity:1;transform:translateY(0)}
-    }
-
-    .pedido-item .left{
-      min-width:0;
-      flex:1 1 auto;
-    }
-
-    .pedido-item strong{
-      display:block;
-      font-size:.97rem;
-      margin-bottom:4px;
-      word-break:break-word;
-    }
-
-    .pedido-item span{
-      display:block;
-      font-size:.88rem;
-      color:var(--muted);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width:100%;
-    }
-
-    .pedido-badge{
-      flex-shrink:0;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(255,225,0,.08);
-      border:1px solid rgba(255,225,0,.18);
-      color:var(--yellow);
-      font-size:.78rem;
-      font-weight:700;
-      max-width:100%;
-    }
-
-    .cards-3{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:14px;
-      margin-top:18px;
-      min-width:0;
-    }
-
-    .feature-card{
-      padding:22px;
-      border-radius:20px;
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.08);
-      text-align:left;
-      min-width:0;
-    }
-
-    .feature-card h3{
-      font-family:'Montserrat',sans-serif;
-      font-size:1.05rem;
-      margin-bottom:8px;
-      word-break:break-word;
-    }
-
-    .feature-card p{
-      color:var(--muted);
-      line-height:1.55;
-      font-size:.92rem;
-    }
-
-    .cta-final{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:18px;
-      align-items:center;
-      min-width:0;
-    }
-
-    .cta-card{
-      padding:28px;
-      min-width:0;
-    }
-
-    .cta-card h2{
-      font-family:'Montserrat',sans-serif;
-      font-size:clamp(1.8rem, 3vw, 2.8rem);
-      line-height:1.02;
-      margin-bottom:12px;
-      text-transform:uppercase;
-      word-break:break-word;
-    }
-
-    .cta-card p{
-      color:var(--muted);
-      line-height:1.65;
-      max-width:720px;
-    }
-
-    .cta-list{
-      display:grid;
-      gap:10px;
-      margin-top:18px;
-    }
-
-    .cta-list div{
-      padding:12px 14px;
-      border-radius:14px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      font-size:.94rem;
-      word-break:break-word;
-    }
-
-    .footer{
-      padding:28px 0 40px;
-      position:relative;
-      z-index:2;
-    }
-
-    .footer-card{
-      padding:18px 20px;
-      text-align:center;
-      color:var(--muted);
-      font-size:.94rem;
-      word-break:break-word;
-    }
-
-    .footer-card a{
-      color:var(--yellow);
-      font-weight:700;
-    }
-
-    .floating-wa{
-      position:fixed;
-      right:14px;
-      bottom:16px;
-      z-index:70;
-      width:56px;
-      height:56px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:#25D366;
-      box-shadow:0 14px 26px rgba(37,211,102,.32);
-      border:1px solid rgba(255,255,255,.18);
-      transition:opacity .22s ease, transform .18s ease, visibility .22s ease;
-      flex-shrink:0;
-    }
-
-    .floating-wa:hover{transform:translateY(-2px)}
-
-    .floating-wa.is-hidden{
-      opacity:0;
-      visibility:hidden;
-      pointer-events:none;
-      transform:translateY(8px);
-    }
-
-    .floating-wa svg{
-      width:28px;
-      height:28px;
-      fill:#fff;
-      display:block;
-    }
-
-    .reveal{
-      opacity:0;
-      will-change:transform, opacity;
-      transition:
-        opacity .65s ease,
-        transform .65s cubic-bezier(.22,.61,.36,1);
-    }
-
-    .reveal-left{transform:translate3d(-24px,0,0)}
-    .reveal-right{transform:translate3d(24px,0,0)}
-    .reveal-up{transform:translate3d(0,24px,0)}
-
-    .reveal.show{
-      opacity:1;
-      transform:translate3d(0,0,0);
-    }
-
-    @media (max-width: 1024px){
-      body::before{
-        background-size:contain;
-      }
-
-      .hero-card,
-      .player-grid,
-      .cta-final{
-        grid-template-columns:1fr;
-      }
-
-      .info-bar{
-        grid-template-columns:repeat(2, minmax(0,1fr));
-      }
-
-      .cards-3{
-        grid-template-columns:1fr;
-      }
-    }
-
-    @media (max-width: 780px){
-      .container{
-        width:min(var(--container), calc(100% - 24px));
-      }
-
-      .menu-toggle{
-        display:grid;
-        place-items:center;
-      }
-
-      .nav-links{
-        position:absolute;
-        left:0;
-        right:0;
-        top:calc(100% + 10px);
-        display:none;
-        flex-direction:column;
-        align-items:stretch;
-        gap:8px;
-        padding:12px;
-        border-radius:18px;
-        background:var(--card);
-        border:1px solid var(--line);
-        box-shadow:var(--shadow);
-        width:100%;
-      }
-
-      .nav-links.open{display:flex}
-
-      .nav-links a{
-        text-align:center;
-        width:100%;
-        background:rgba(255,255,255,.03);
-      }
-
-      .hero{
-        padding-top:18px;
-      }
-
-      .hero-card,
-      .section,
-      .player-panel,
-      .mini-panel,
-      .cta-card{
-        padding:20px;
-      }
-
-      .hero-card{
-        gap:16px;
-      }
-
-      .hero-chip-row{
-        gap:8px;
-        margin-bottom:12px;
-      }
-
-      .hero h1{
-        font-size:1.95rem;
-        margin-bottom:10px;
-      }
-
-      .hero p{
-        font-size:.95rem;
-        line-height:1.55;
-      }
-
-      .hero-logo-wrap{
-        width:min(100%, 300px);
-        padding:14px;
-      }
-
-      .info-bar{
-        grid-template-columns:1fr;
-      }
-
-      .request-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero-actions,
-      .player-actions{
-        flex-direction:column;
-      }
-
-      .hero-actions .btn,
-      .player-actions .btn{
-        width:100%;
-      }
-
-      .pedido-item{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:8px;
-        padding:14px 15px;
-      }
-
-      .pedido-item span{
-        white-space:normal;
-        overflow:visible;
-        text-overflow:unset;
-        line-height:1.45;
-      }
-
-      .pedido-badge{
-        font-size:.74rem;
-        padding:7px 11px;
-      }
-
-      .brand-text span{
-        max-width:160px;
-      }
-
-      .floating-wa{
-        right:12px;
-        bottom:14px;
-        width:54px;
-        height:54px;
-      }
-
-      .reveal-left,
-      .reveal-right,
-      .reveal-up{
-        transform:translate3d(0,18px,0);
-      }
-    }
-
-    @media (max-width: 560px){
-      .container{
-        width:calc(100% - 20px);
-      }
-
-      .brand-logo{
-        width:46px;
-        height:46px;
-      }
-
-      .brand-text strong{
-        font-size:.92rem;
-      }
-
-      .brand-text span{
-        font-size:.74rem;
-        max-width:130px;
-      }
-
-      .hero-card,
-      .section,
-      .player-panel,
-      .mini-panel,
-      .cta-card{
-        padding:18px;
-      }
-
-      .hero{
-        padding-top:14px;
-      }
-
-      .hero h1{
-        font-size:1.78rem;
-      }
-
-      .section-title{
-        font-size:1.25rem;
-      }
-
-      .hero-logo-wrap{
-        width:min(100%, 250px);
-        border-radius:22px;
-      }
-
-      .chip{
-        font-size:.78rem;
-        padding:7px 11px;
-      }
-
-      .floating-wa{
-        width:52px;
-        height:52px;
-        right:10px;
-        bottom:12px;
-      }
-
-      .floating-wa svg{
-        width:26px;
-        height:26px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      .reveal,
-      .pedido-item,
-      .floating-wa,
-      .btn,
-      .menu-toggle span{
-        transition:none !important;
-        animation:none !important;
-      }
-
-      .reveal{
-        opacity:1 !important;
-        transform:none !important;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header class="site-header">
-    <div class="nav-wrap">
-      <a href="#inicio" class="brand">
-        <img src="https://iili.io/q655Cn2.md.png" alt="REAL SOUND" class="brand-logo" />
-        <div class="brand-text">
-          <strong>REAL SOUND</strong>
-          <span>Buena vibra y musica</span>
-        </div>
-      </a>
-
-      <div class="nav-right">
-        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">◐</button>
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
-          <span></span><span></span><span></span>
-        </button>
+const SUPABASE_URL = "https://fhxcumwhgtfirznnznjx.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZoeGN1bXdoZ3RmaXJ6bm56bmp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc5OTYyNzEsImV4cCI6MjA4MzU3MjI3MX0.7z1B099L4yrA9k1JxwvYGCABzqiqYtkUClI3E8wQ2zA";
+const DEFAULT_WHATSAPP_NUMBER = "5491164499481";
+
+const sb = window.supabase?.createClient ? window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY) : null;
+
+/* =========================
+   DOM
+========================= */
+const burgerBtn = document.getElementById("burgerBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+const topWhatsAppBtn = document.getElementById("topWhatsAppBtn");
+const mobileWhatsAppBtn = document.getElementById("mobileWhatsAppBtn");
+const heroWhatsAppBtn = document.getElementById("heroWhatsAppBtn");
+const finalWhatsAppBtn = document.getElementById("finalWhatsAppBtn");
+const waFloat = document.getElementById("waFloat");
+const emailContactBtn = document.getElementById("emailContactBtn");
+
+const dynamicFavicon = document.getElementById("dynamicFavicon");
+const brandLogo = document.getElementById("brandLogo");
+const heroLogo = document.getElementById("heroLogo");
+const footerBrandLogo = document.getElementById("footerBrandLogo");
+const brandTitle = document.getElementById("brandTitle");
+const brandTagline = document.getElementById("brandTagline");
+const footerBrandTitle = document.getElementById("footerBrandTitle");
+const footerBrandTagline = document.getElementById("footerBrandTagline");
+
+const heroBackgroundLayer = document.getElementById("heroBackgroundLayer");
+const heroOverlayLayer = document.getElementById("heroOverlayLayer");
+const heroVideo = document.getElementById("heroVideo");
+
+const heroBadge = document.getElementById("heroBadge");
+const heroTitle = document.getElementById("heroTitle");
+const heroSubtitle = document.getElementById("heroSubtitle");
+const heroPainTitle = document.getElementById("heroPainTitle");
+const heroPainText = document.getElementById("heroPainText");
+const heroPainTabs = document.getElementById("heroPainTabs");
+
+const solutionsIntro = document.getElementById("solutionsIntro");
+
+const featuredGrid = document.getElementById("featuredGrid");
+const categoryChips = document.getElementById("categoryChips");
+const searchInput = document.getElementById("searchInput");
+const typeFilter = document.getElementById("typeFilter");
+const tagFilter = document.getElementById("tagFilter");
+const stateBox = document.getElementById("stateBox");
+const projectsGrid = document.getElementById("projectsGrid");
+const moreWrap = document.getElementById("moreWrap");
+const moreBtn = document.getElementById("moreBtn");
+
+const autoadminTitle = document.getElementById("autoadminTitle");
+const autoadminSubtitle = document.getElementById("autoadminSubtitle");
+const autoadminContent = document.getElementById("autoadminContent");
+const autoadminBtn = document.getElementById("autoadminBtn");
+
+const budgetTitle = document.getElementById("budgetTitle");
+const budgetSubtitle = document.getElementById("budgetSubtitle");
+const budgetContent = document.getElementById("budgetContent");
+const budgetBtn = document.getElementById("budgetBtn");
+
+const differentialsSubtitle = document.getElementById("differentialsSubtitle");
+
+const faqList = document.getElementById("faqList");
+
+const finalCtaTitle = document.getElementById("finalCtaTitle");
+const finalCtaSubtitle = document.getElementById("finalCtaSubtitle");
+
+const modal = document.getElementById("projectModal");
+const modalBackdrop = document.getElementById("modalBackdrop");
+const modalClose = document.getElementById("modalClose");
+const modalCategory = document.getElementById("modalCategory");
+const modalStatus = document.getElementById("modalStatus");
+const modalTitle = document.getElementById("modalTitle");
+const modalImage = document.getElementById("modalImage");
+const modalType = document.getElementById("modalType");
+const modalPreviewType = document.getElementById("modalPreviewType");
+const modalShort = document.getElementById("modalShort");
+const modalFull = document.getElementById("modalFull");
+const modalDemoBtn = document.getElementById("modalDemoBtn");
+const modalWhatsAppBtn = document.getElementById("modalWhatsAppBtn");
+const modalTagsList = document.getElementById("modalTagsList");
+
+/* =========================
+   STATE
+========================= */
+let categoriesData = [];
+let projectsData = [];
+let faqsData = [];
+let siteContentData = [];
+let siteSettingsData = null;
+let tagsData = [];
+let projectTagsData = [];
+
+let activeCategory = "__all__";
+let searchTerm = "";
+let activeType = "__all__";
+let activeTag = "__all__";
+let visibleCount = 6;
+let heroPainIndex = 0;
+let heroPainTimer = null;
+
+const heroPainItems = [
+  { title: "Tu negocio depende solo de Instagram y WhatsApp.", text: "Creamos una estructura web clara para mostrar mejor, ordenar consultas y convertir más." },
+  { title: "Cada cambio no debería depender de tocar código.", text: "La base A/B permite administrar contenido, demos y bloques sin romper el frente público." },
+  { title: "Mostrar servicios no alcanza si no hay criterio comercial.", text: "La web tiene que guiar al cliente, destacar lo importante y cerrar mejor por WhatsApp o contacto directo." },
+  { title: "Tu marca puede verse potente y seguir siendo escalable.", text: "Diseño visual, lógica modular y una UX más sólida para crecer sin rehacer todo cada vez." },
+];
+
+/* =========================
+   HELPERS
+========================= */
+function escapeHtml(s) {
+  return String(s ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function norm(s) {
+  return String(s || "").toLowerCase().trim();
+}
+
+function getCurrentWhatsAppNumber() {
+  return siteSettingsData?.whatsapp_number || DEFAULT_WHATSAPP_NUMBER;
+}
+
+function getWhatsAppUrl(text) {
+  return `https://wa.me/${getCurrentWhatsAppNumber()}?text=${encodeURIComponent(text)}`;
+}
+
+function findCategoryName(id) {
+  return categoriesData.find(c => String(c.id) === String(id))?.name || "Sin categoría";
+}
+
+function findSiteContent(key) {
+  return siteContentData.find(item => item.key === key && item.active);
+}
+
+function showState(msg) {
+  if (!stateBox) return;
+  stateBox.style.display = "block";
+  stateBox.textContent = msg;
+}
+
+function hideState() {
+  if (!stateBox) return;
+  stateBox.style.display = "none";
+  stateBox.textContent = "";
+}
+
+function switchMobileMenu(force) {
+  if (!mobileMenu || !burgerBtn) return;
+  const open = typeof force === "boolean" ? force : !mobileMenu.classList.contains("isOpen");
+  mobileMenu.classList.toggle("isOpen", open);
+  mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
+  burgerBtn.setAttribute("aria-expanded", open ? "true" : "false");
+}
+
+function mapStatusLabel(status) {
+  const map = {
+    draft: "Borrador",
+    published: "Publicado",
+    featured: "Destacado",
+    archived: "Archivado",
+    new: "Nuevo",
+  };
+  return map[status] || "Publicado";
+}
+
+function shouldShowFrontStatus(status) {
+  return status === "featured" || status === "new";
+}
+
+function getProjectTags(projectId) {
+  const ids = projectTagsData
+    .filter(row => String(row.project_id) === String(projectId))
+    .map(row => String(row.tag_id));
+  return tagsData.filter(tag => ids.includes(String(tag.id)));
+}
+
+function setDefaultWhatsAppLinks() {
+  const msg = "Hola CIBORG 347, vi tus demos y quiero consultar por una web para mi marca o emprendimiento.";
+
+  [topWhatsAppBtn, mobileWhatsAppBtn, heroWhatsAppBtn, finalWhatsAppBtn, waFloat].forEach(el => {
+    if (!el) return;
+    el.href = getWhatsAppUrl(msg);
+    el.target = "_blank";
+    el.rel = "noopener";
+  });
+
+  if (autoadminBtn) {
+    autoadminBtn.href = getWhatsAppUrl("Hola CIBORG 347, quiero consultar por una web autoadministrable para mi proyecto.");
+  }
+
+  if (budgetBtn) {
+    budgetBtn.href = getWhatsAppUrl("Hola CIBORG 347, quiero consultar por un sistema o herramienta especial para mi negocio.");
+  }
+
+  if (siteSettingsData?.email_contact && emailContactBtn) {
+    emailContactBtn.href = `mailto:${siteSettingsData.email_contact}`;
+  }
+}
+
+function applySiteSettings() {
+  const s = siteSettingsData;
+  if (!s) return;
+
+  const logo = s.logo_url || "https://iili.io/fETkPEv.md.png";
+  const heroLogoUrl = s.hero_logo_url || logo;
+  const footerLogo = s.footer_logo_url || logo;
+  const siteTitle = s.site_title || "CIBORG 347™";
+  const siteTagline = s.site_tagline || "Landing Pages & Web Designs";
+
+  if (brandLogo) brandLogo.src = logo;
+  if (heroLogo) heroLogo.src = heroLogoUrl;
+  if (footerBrandLogo) footerBrandLogo.src = footerLogo;
+  if (dynamicFavicon && s.favicon_url) dynamicFavicon.href = s.favicon_url;
+
+  if (brandTitle) brandTitle.textContent = siteTitle;
+  if (footerBrandTitle) footerBrandTitle.textContent = siteTitle;
+  if (brandTagline) brandTagline.textContent = siteTagline;
+  if (footerBrandTagline) footerBrandTagline.textContent = siteTagline;
+
+  if (heroBadge && s.hero_badge) heroBadge.textContent = s.hero_badge;
+  if (heroTitle && s.hero_title) heroTitle.textContent = s.hero_title;
+  if (heroSubtitle && s.hero_subtitle) heroSubtitle.textContent = s.hero_subtitle;
+  if (heroWhatsAppBtn && s.hero_cta_label) heroWhatsAppBtn.textContent = s.hero_cta_label;
+  if (heroWhatsAppBtn && s.hero_cta_url) heroWhatsAppBtn.href = s.hero_cta_url;
+
+  if (heroBackgroundLayer) {
+    if (s.use_background_image && s.background_image_url) {
+      heroBackgroundLayer.style.backgroundImage = `url("${s.background_image_url}")`;
+      heroBackgroundLayer.style.display = "block";
+    } else if (s.hero_image_url) {
+      heroBackgroundLayer.style.backgroundImage = `url("${s.hero_image_url}")`;
+      heroBackgroundLayer.style.display = "block";
+    } else {
+      heroBackgroundLayer.style.display = "none";
+    }
+  }
+
+  if (heroOverlayLayer) {
+    if (s.hero_overlay_url) {
+      heroOverlayLayer.style.backgroundImage = `url("${s.hero_overlay_url}")`;
+      heroOverlayLayer.style.display = "block";
+    } else {
+      heroOverlayLayer.style.display = "none";
+    }
+  }
+
+  if (heroVideo) {
+    if (s.use_hero_video && s.hero_video_url) {
+      heroVideo.src = s.hero_video_url;
+      heroVideo.style.display = "block";
+    } else {
+      heroVideo.pause();
+      heroVideo.removeAttribute("src");
+      heroVideo.style.display = "none";
+    }
+  }
+
+  if (document.body && s.use_background_image && s.background_image_url) {
+    document.body.style.setProperty("--dynamic-bg-image", `url("${s.background_image_url}")`);
+    document.body.classList.add("hasDynamicBackground");
+  } else {
+    document.body.classList.remove("hasDynamicBackground");
+    document.body.style.removeProperty("--dynamic-bg-image");
+  }
+
+  setDefaultWhatsAppLinks();
+}
+
+function applyGlobalContent() {
+  const hero = findSiteContent("hero");
+  if (hero) {
+    if (hero.title && heroTitle) heroTitle.textContent = hero.title;
+    if (hero.subtitle && heroSubtitle) heroSubtitle.textContent = hero.subtitle;
+  }
+
+  const solutions = findSiteContent("solutions_intro");
+  if (solutions?.subtitle && solutionsIntro) {
+    solutionsIntro.textContent = solutions.subtitle;
+  }
+
+  const autoadmin = findSiteContent("autoadmin_block");
+  if (autoadmin) {
+    if (autoadmin.title && autoadminTitle) autoadminTitle.textContent = autoadmin.title;
+    if (autoadmin.subtitle && autoadminSubtitle) autoadminSubtitle.textContent = autoadmin.subtitle;
+    if (autoadmin.content && autoadminContent) autoadminContent.textContent = autoadmin.content;
+    if (autoadmin.cta_label && autoadminBtn) autoadminBtn.textContent = autoadmin.cta_label;
+    if (autoadmin.cta_url && autoadminBtn) autoadminBtn.href = autoadmin.cta_url;
+  }
+
+  const budget = findSiteContent("budget_system_block");
+  if (budget) {
+    if (budget.title && budgetTitle) budgetTitle.textContent = budget.title;
+    if (budget.subtitle && budgetSubtitle) budgetSubtitle.textContent = budget.subtitle;
+    if (budget.content && budgetContent) budgetContent.textContent = budget.content;
+    if (budget.cta_label && budgetBtn) budgetBtn.textContent = budget.cta_label;
+    if (budget.cta_url && budgetBtn) budgetBtn.href = budget.cta_url;
+  }
+
+  const diff = findSiteContent("differentials");
+  if (diff?.subtitle && differentialsSubtitle) {
+    differentialsSubtitle.textContent = diff.subtitle;
+  }
+
+  const finalCta = findSiteContent("final_cta");
+  if (finalCta) {
+    if (finalCta.title && finalCtaTitle) finalCtaTitle.textContent = finalCta.title;
+    if (finalCta.subtitle && finalCtaSubtitle) finalCtaSubtitle.textContent = finalCta.subtitle;
+    if (finalCta.cta_label && finalWhatsAppBtn) finalWhatsAppBtn.textContent = finalCta.cta_label;
+    if (finalCta.cta_url && finalWhatsAppBtn) finalWhatsAppBtn.href = finalCta.cta_url;
+  }
+}
+
+
+function renderHeroPain(index = 0) {
+  if (!heroPainTitle || !heroPainText || !heroPainTabs) return;
+  heroPainIndex = index % heroPainItems.length;
+  const item = heroPainItems[heroPainIndex];
+  heroPainTitle.textContent = item.title;
+  heroPainText.textContent = item.text;
+
+  heroPainTabs.querySelectorAll("[data-pain]").forEach((btn, idx) => {
+    btn.classList.toggle("isActive", idx === heroPainIndex);
+  });
+}
+
+function startHeroPainRotation() {
+  if (!heroPainTabs || heroPainItems.length <= 1) return;
+  if (heroPainTimer) clearInterval(heroPainTimer);
+  heroPainTimer = setInterval(() => {
+    renderHeroPain((heroPainIndex + 1) % heroPainItems.length);
+  }, 4200);
+}
+
+function renderFaqs() {
+  if (!faqList) return;
+
+  const activeFaqs = faqsData
+    .filter(faq => faq.active)
+    .sort((a, b) => (a.order_index ?? 0) - (b.order_index ?? 0));
+
+  if (!activeFaqs.length) {
+    faqList.innerHTML = `<div class="emptyState">No hay preguntas frecuentes cargadas todavía.</div>`;
+    return;
+  }
+
+  faqList.innerHTML = activeFaqs.map(faq => `
+    <article class="faqItem">
+      <button class="faqItem__head" type="button">
+        <strong>${escapeHtml(faq.question)}</strong>
+        <span>+</span>
+      </button>
+      <div class="faqItem__body">
+        <p>${escapeHtml(faq.answer)}</p>
       </div>
+    </article>
+  `).join("");
 
-      <nav class="nav-links" id="navLinks">
-        <a href="#radio">Sonido</a>
-        <a href="#pedidos">Pedidos</a>
-        <a href="#sonido">Esencia</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="inicio">
-    <section class="hero">
-      <div class="container">
-        <div class="hero-card glass reveal reveal-left">
-          <div class="hero-copy">
-            <div class="hero-chip-row">
-              <div class="chip live"><span class="dot"></span> En vivo</div>
-              <div class="chip">Real Sound</div>
-              <div class="chip">Buena energia</div>
-            </div>
-
-            <h1><span class="accent">REAL</span><br>SOUND</h1>
-
-            <p>
-              REAL SOUND es una sintonia con identidad propia. Una mezcla de vibra, musica, energia positiva y conexion con la gente. Un espacio para compartir sonidos, sentir el momento y dejar que cada tema acompañe la noche con un espiritu roots, libre y bien arriba.
-            </p>
-
-            <div class="hero-actions">
-              <a href="#radio" class="btn btn-primary">Escuchar ahora</a>
-              <a href="#pedidos" class="btn btn-secondary">Pedir mi tema</a>
-              <a href="#contacto" class="btn btn-ghost">Ir al contacto</a>
-            </div>
-          </div>
-
-          <div class="hero-visual reveal reveal-right">
-            <div class="hero-logo-wrap">
-              <img src="https://iili.io/q655Cn2.md.png" alt="Logo REAL SOUND" />
-            </div>
-          </div>
-        </div>
-
-        <div class="info-bar">
-          <div class="info-box reveal reveal-left">
-            <div class="label">Oyentes en este momento</div>
-            <div class="value"><strong id="oyentesCount">248</strong> conectados</div>
-          </div>
-          <div class="info-box reveal reveal-right">
-            <div class="label">Clima</div>
-            <div class="value">Vibra encendida</div>
-          </div>
-          <div class="info-box reveal reveal-left">
-            <div class="label">Hora actual</div>
-            <div class="value" id="horaActual">--:--:--</div>
-          </div>
-          <div class="info-box reveal reveal-right">
-            <div class="label">Momento</div>
-            <div class="value" id="fechaActual">Cargando...</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container" id="radio">
-      <div class="player-grid">
-        <div class="player-panel glass reveal reveal-left">
-          <h2 class="section-title">Una sintonia para sentir</h2>
-          <p class="section-sub">
-            No es solo musica. Es compania, energia y una forma de conectar con una atmosfera distinta. REAL SOUND acompaña, levanta el animo y transforma cada pedido en parte del momento.
-          </p>
-
-          <div class="audio-wrap">
-            <audio id="radioPlayer" preload="none" src="https://usa15.fastcast4u.com/proxy/ciborg347?mp=/1"></audio>
-          </div>
-
-          <div class="player-actions">
-            <button class="btn btn-primary" id="playBtn" onclick="toggleRadio()">▶ Escuchar ahora</button>
-            <button class="btn btn-ghost" onclick="shareRadio()">📲 Compartir</button>
-            <a class="btn btn-secondary" href="https://wa.me/message/KPWJHN63WA3MA1" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
-          </div>
-
-          <div class="status" id="playerStatus">La vibra esta esperando que le des play.</div>
-        </div>
-
-        <div class="side-cards">
-          <div class="mini-panel glass reveal reveal-right">
-            <h3>Buena onda real</h3>
-            <p>
-              Una propuesta con alma, con personalidad y con esa energia roots que se siente desde el primer momento.
-            </p>
-          </div>
-
-          <div class="mini-panel glass reveal reveal-right">
-            <h3>La gente tambien suena</h3>
-            <p>
-              Cada pedido suma, cada saludo acompaña y cada persona que escucha forma parte del clima de REAL SOUND.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container" id="pedidos">
-      <div class="section glass reveal reveal-left">
-        <h2 class="section-title">Pedi tu tema</h2>
-        <p class="section-sub">
-          Elegi la cancion que queres escuchar y sumate a la vibra. REAL SOUND se vive mejor cuando la gente participa y pone su propio sonido en el aire.
-        </p>
-
-        <form id="temaForm" class="request-grid" novalidate>
-          <div class="field">
-            <label for="nombreOyente">Nombre</label>
-            <input id="nombreOyente" type="text" placeholder="Ej: Martin" autocomplete="name" />
-          </div>
-
-          <div class="field">
-            <label for="numeroOyente">Numero (opcional)</label>
-            <input id="numeroOyente" type="tel" placeholder="Ej: 11 1234 5678" autocomplete="tel" />
-          </div>
-
-          <div class="field full">
-            <label for="pedidoTema">Pedido musical</label>
-            <textarea id="pedidoTema" placeholder="Ej: Quiero pedir un tema y mandar un saludo..."></textarea>
-          </div>
-
-          <div class="field full">
-            <button type="submit" class="btn btn-secondary" style="width:100%;">Enviar pedido por WhatsApp</button>
-            <div class="helper">
-              Pedi tu tema, manda tu saludo y se parte del clima de REAL SOUND.
-            </div>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <section class="container">
-      <div class="section glass reveal reveal-right">
-        <h2 class="section-title">Sonidos que llegan</h2>
-        <p class="section-sub">
-          Una muestra de la gente que se suma, participa y acompaña esta sintonia con sus temas y su energia.
-        </p>
-
-        <div class="pedidos-list" id="pedidosList"></div>
-      </div>
-    </section>
-
-    <section class="container" id="sonido">
-      <div class="section glass reveal reveal-left">
-        <h2 class="section-title">La esencia de REAL SOUND</h2>
-        <p class="section-sub">
-          REAL SOUND representa buena vibra, presencia, musica con identidad y una energia que busca conectar de verdad con quien escucha.
-        </p>
-
-        <div class="cards-3">
-          <article class="feature-card reveal reveal-left">
-            <h3>Identidad</h3>
-            <p>
-              Un estilo propio, una imagen fuerte y una presencia que transmite personalidad desde el primer vistazo.
-            </p>
-          </article>
-
-          <article class="feature-card reveal reveal-up">
-            <h3>Conexion</h3>
-            <p>
-              Una sintonia pensada para compartir momentos, acompañar el dia o la noche y hacer sentir a la gente parte de algo.
-            </p>
-          </article>
-
-          <article class="feature-card reveal reveal-right">
-            <h3>Vibra</h3>
-            <p>
-              Sonido, roots, buena energia y una atmosfera que invita a quedarse, escuchar y dejarse llevar por el clima.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="container" id="contacto">
-      <div class="cta-final">
-        <div class="cta-card glass reveal reveal-left">
-          <h2>Conectate con<br>REAL SOUND</h2>
-          <p>
-            Si queres sumarte con un pedido, mandar un saludo o compartir esta sintonia con alguien mas, escribi directo por WhatsApp y segui siendo parte de esta energia.
-          </p>
-
-          <div class="hero-actions" style="margin-top:18px;">
-            <a class="btn btn-secondary" href="https://wa.me/message/KPWJHN63WA3MA1" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
-            <button class="btn btn-ghost" onclick="shareRadio()">Compartir la pagina</button>
-          </div>
-        </div>
-
-        <div class="cta-card glass reveal reveal-right">
-          <div class="cta-list">
-            <div>Buena vibra</div>
-            <div>Musica con identidad</div>
-            <div>Conexion con la gente</div>
-            <div>Esencia roots</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-card glass reveal reveal-up">
-        Creado y diseñado por <a href="https://ciborg347oficial.onrender.com" target="_blank" rel="noopener noreferrer">Ciborg 347</a>
-      </div>
-    </div>
-  </footer>
-
-  <a class="floating-wa" id="floatingWa" href="https://wa.me/message/KPWJHN63WA3MA1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.47 0 .09 5.36.09 11.96c0 2.11.55 4.18 1.6 6.01L0 24l6.2-1.62a11.92 11.92 0 0 0 5.87 1.5h.01c6.59 0 11.97-5.36 11.97-11.96c0-3.2-1.25-6.2-3.53-8.44ZM12.08 21.86h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.68.96.98-3.59-.23-.37a9.9 9.9 0 0 1-1.53-5.31c0-5.48 4.46-9.94 9.95-9.94c2.66 0 5.15 1.03 7.03 2.9a9.85 9.85 0 0 1 2.92 7.03c0 5.48-4.47 9.94-9.95 9.94Zm5.45-7.42c-.3-.15-1.79-.88-2.07-.98c-.28-.1-.48-.15-.68.15c-.2.3-.78.98-.95 1.18c-.18.2-.35.23-.65.08c-.3-.15-1.25-.46-2.39-1.47c-.89-.79-1.49-1.76-1.66-2.06c-.18-.3-.02-.46.13-.61c.14-.14.3-.35.45-.53c.15-.18.2-.3.3-.5c.1-.2.05-.38-.03-.53c-.08-.15-.68-1.65-.93-2.25c-.25-.61-.5-.52-.68-.53h-.58c-.2 0-.53.08-.8.38c-.28.3-1.05 1.03-1.05 2.51s1.08 2.92 1.23 3.12c.15.2 2.12 3.24 5.13 4.54c.72.31 1.28.49 1.72.62c.72.23 1.38.2 1.9.12c.58-.09 1.79-.73 2.05-1.44c.25-.71.25-1.31.18-1.44c-.08-.13-.28-.2-.58-.35Z"/></svg>
-  </a>
-
-  <script>
-    const THEME_KEY = "real_sound_theme_v1";
-    const body = document.body;
-    const themeToggle = document.getElementById("themeToggle");
-
-    (function initTheme(){
-      const saved = localStorage.getItem(THEME_KEY);
-      if(saved === "light"){
-        body.classList.add("light");
-      }
-    })();
-
-    themeToggle.addEventListener("click", () => {
-      body.classList.toggle("light");
-      localStorage.setItem(THEME_KEY, body.classList.contains("light") ? "light" : "dark");
+  faqList.querySelectorAll(".faqItem").forEach(item => {
+    const head = item.querySelector(".faqItem__head");
+    head.addEventListener("click", () => {
+      item.classList.toggle("isOpen");
     });
+  });
+}
 
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
+function renderFeatured() {
+  if (!featuredGrid) return;
 
-    menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("active");
-      navLinks.classList.toggle("open");
-    });
+  const list = projectsData
+    .filter(p => p.active && p.featured_home && p.status !== "archived")
+    .sort((a, b) => (a.order_index ?? 0) - (b.order_index ?? 0))
+    .slice(0, 6);
 
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        menuToggle.classList.remove("active");
-        navLinks.classList.remove("open");
-      });
-    });
+  if (!list.length) {
+    featuredGrid.innerHTML = `<div class="emptyState">No hay destacados cargados.</div>`;
+    return;
+  }
 
-    const audio = document.getElementById("radioPlayer");
-    const playBtn = document.getElementById("playBtn");
-    const playerStatus = document.getElementById("playerStatus");
-    let playing = false;
+  featuredGrid.innerHTML = list.map(project => {
+    const tags = getProjectTags(project.id).slice(0, 2);
+    const showStatus = shouldShowFrontStatus(project.status);
+    return `
+      <article class="featuredCard" data-open-project="${project.id}">
+        <div class="featuredCard__image">
+          <img src="${escapeHtml(project.image_url)}" alt="${escapeHtml(project.title)}" loading="lazy" />
+        </div>
 
-    function toggleRadio(){
-      if(!playing){
-        audio.load();
-        audio.play().then(() => {
-          playing = true;
-          playBtn.textContent = "⏸ Detener";
-          playerStatus.textContent = "La vibra esta sonando...";
-        }).catch(() => {
-          playerStatus.textContent = "Toca nuevamente para entrar en sintonia.";
-        });
-      } else {
-        audio.pause();
-        playing = false;
-        playBtn.textContent = "▶ Escuchar ahora";
-        playerStatus.textContent = "La vibra esta esperando que le des play.";
-      }
-    }
-
-    function shareRadio(){
-      const text = "Escucha REAL SOUND";
-      const url = window.location.href;
-      if(navigator.share){
-        navigator.share({ title: "REAL SOUND", text, url }).catch(() => {});
-      } else {
-        alert("Copia y comparti:\n" + text + "\n" + url);
-      }
-    }
-
-    function updateClock(){
-      const now = new Date();
-      const hora = now.toLocaleTimeString("es-AR", {
-        hour:"2-digit",
-        minute:"2-digit",
-        second:"2-digit"
-      });
-      const fecha = now.toLocaleDateString("es-AR", {
-        weekday:"long",
-        day:"numeric",
-        month:"long",
-        year:"numeric"
-      });
-
-      document.getElementById("horaActual").textContent = hora;
-      document.getElementById("fechaActual").textContent = fecha;
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
-
-    const oyentesEl = document.getElementById("oyentesCount");
-    const OYENTES_KEY = "real_sound_oyentes_v1";
-
-    function clamp(n, min, max){
-      return Math.max(min, Math.min(max, n));
-    }
-
-    function getTargetRangeByHour(hour){
-      if(hour >= 0 && hour < 4) return { min: 68, max: 145 };
-      if(hour >= 4 && hour < 8) return { min: 80, max: 165 };
-      if(hour >= 8 && hour < 13) return { min: 140, max: 240 };
-      if(hour >= 13 && hour < 18) return { min: 170, max: 290 };
-      if(hour >= 18 && hour < 23) return { min: 220, max: 360 };
-      return { min: 120, max: 220 };
-    }
-
-    function nextOyentesValue(current, dateObj){
-      const hour = dateObj.getHours();
-      const range = getTargetRangeByHour(hour);
-      const mid = (range.min + range.max) / 2;
-      let step = Math.floor(Math.random() * 7) - 3;
-
-      if(current < range.min + 8) step = Math.max(step, 1);
-      if(current > range.max - 8) step = Math.min(step, -1);
-      if(current < mid - 30 && Math.random() < 0.55) step += 1;
-      if(current > mid + 30 && Math.random() < 0.55) step -= 1;
-      if(step === 0 && Math.random() < 0.35) step = current < mid ? 1 : -1;
-
-      return clamp(current + step, 45, 390);
-    }
-
-    function initOyentes(){
-      const now = Date.now();
-      const hour = new Date().getHours();
-      const range = getTargetRangeByHour(hour);
-
-      let state;
-      try {
-        state = JSON.parse(localStorage.getItem(OYENTES_KEY) || "null");
-      } catch(e){
-        state = null;
-      }
-
-      if(!state || typeof state.value !== "number"){
-        state = {
-          value: Math.floor((range.min + range.max) / 2),
-          ts: now
-        };
-        localStorage.setItem(OYENTES_KEY, JSON.stringify(state));
-      }
-
-      const elapsedMin = Math.floor((now - (state.ts || now)) / 60000);
-      let value = clamp(Math.round(state.value), 45, 390);
-
-      if(elapsedMin > 0){
-        for(let i = 0; i < Math.min(elapsedMin, 240); i++){
-          value = nextOyentesValue(value, new Date((state.ts || now) + (i + 1) * 60000));
-        }
-        state = { value, ts: now };
-        localStorage.setItem(OYENTES_KEY, JSON.stringify(state));
-      }
-
-      oyentesEl.textContent = value;
-    }
-
-    function tickOyentes(){
-      let state;
-      try {
-        state = JSON.parse(localStorage.getItem(OYENTES_KEY) || "null");
-      } catch(e){
-        state = null;
-      }
-      const now = Date.now();
-      let current = state && typeof state.value === "number" ? state.value : 180;
-      const next = nextOyentesValue(current, new Date(now));
-      localStorage.setItem(OYENTES_KEY, JSON.stringify({ value: next, ts: now }));
-      oyentesEl.textContent = next;
-    }
-
-    initOyentes();
-    setInterval(tickOyentes, 9000);
-
-    const pedidosData = [
-      {n:"Leo", z:"Wilde", t:"Bob Marley - Is This Love"},
-      {n:"Mica", z:"Quilmes", t:"Dread Mar I - Tu Sin Mi"},
-      {n:"Nico", z:"San Miguel", t:"Los Cafres - Tus Ojos"},
-      {n:"Cami", z:"Avellaneda", t:"Gondwana - Armonia De Amor"},
-      {n:"Tomi", z:"Pilar", t:"Nonpalidece - Dame Luz"},
-      {n:"Rocio", z:"Moron", t:"Damian Marley - Road To Zion"},
-      {n:"Bruno", z:"Lomas", t:"Los Pericos - Pupilas Lejanas"},
-      {n:"Sofi", z:"Lanus", t:"Kameleba - Todo Va A Estar Bien"},
-      {n:"Axel", z:"Ituzaingo", t:"Fidel Nadal - International Love"},
-      {n:"Noe", z:"Haedo", t:"Zona Ganjah - Vibra Positiva"},
-      {n:"Mati", z:"Merlo", t:"Resistencia Suburbana - Jah Guia"},
-      {n:"Luz", z:"Tigre", t:"Cultura Profetica - Para Estar"},
-      {n:"Joa", z:"Jose C. Paz", t:"Protoje - Who Knows"},
-      {n:"Mar", z:"Hurlingham", t:"Alborosie - Kingston Town"},
-      {n:"Franco", z:"San Justo", t:"Morodo - Divina Ciencia"},
-      {n:"Gabi", z:"Caseros", t:"Mato Seco - Navegante"},
-      {n:"Dani", z:"Padua", t:"Steel Pulse - Your House"},
-      {n:"Vero", z:"Berazategui", t:"Dennis Brown - Here I Come"},
-      {n:"Alan", z:"Ramos Mejia", t:"Chronixx - Skankin Sweet"},
-      {n:"Caro", z:"Banfield", t:"Stephen Marley - Traffic Jam"},
-      {n:"Ivan", z:"San Martin", t:"The Gladiators - Roots Natty"},
-      {n:"Meli", z:"Bella Vista", t:"Israel Vibration - Rudeboy Shufflin"},
-      {n:"Fede", z:"Malvinas Argentinas", t:"Burning Spear - Marcus Garvey"},
-      {n:"Flor", z:"Munro", t:"UB40 - Red Red Wine"},
-      {n:"Eze", z:"Vicente Lopez", t:"Black Uhuru - Guess Who's Coming To Dinner"},
-      {n:"Aylen", z:"Martinez", t:"SOJA - You And Me"},
-      {n:"Nahuel", z:"Escobar", t:"Inner Circle - Sweat"},
-      {n:"Bianca", z:"Olivos", t:"Maxi Vargas - Sentimiento Original"},
-      {n:"Kevin", z:"Grand Bourg", t:"Movimiento Original - Natural"},
-      {n:"Daiana", z:"Pacheco", t:"Akal Marley - Bien High"},
-      {n:"Lucas", z:"Don Torcuato", t:"Bob Marley - Buffalo Soldier"},
-      {n:"Agus", z:"Palomar", t:"Nonpalidece - Reggae En El Universo"},
-      {n:"Milagros", z:"Ciudadela", t:"Los Cafres - Si El Amor Se Cae"},
-      {n:"Cristian", z:"Santos Lugares", t:"Dread Mar I - Hoja En Blanco"},
-      {n:"Tamara", z:"Glew", t:"Gondwana - Verde Amarillo Y Rojo"},
-      {n:"Ramiro", z:"Adrogue", t:"Los Pericos - Runaway"},
-      {n:"Julieta", z:"Temperley", t:"Zona Ganjah - Despertar"},
-      {n:"Esteban", z:"Ezeiza", t:"Kameleba - Libre"},
-      {n:"Nadia", z:"Canning", t:"Cultura Profetica - La Complicidad"},
-      {n:"Pablo", z:"Moreno", t:"Fidel Nadal - Te Robaste Mi Corazon"},
-      {n:"Celeste", z:"Paso del Rey", t:"Protoje - Kingston Be Wise"},
-      {n:"Santino", z:"Pontevedra", t:"Damian Marley - Welcome To Jamrock"},
-      {n:"Abril", z:"Lujan", t:"Morodo - La Yerba Del Rey"},
-      {n:"Bautista", z:"Mercedes", t:"Alborosie - Herbalist"},
-      {n:"Camila", z:"Navarro", t:"SOJA - Rest Of My Life"},
-      {n:"Thiago", z:"Laferrere", t:"Inner Circle - Bad Boys"},
-      {n:"Kiara", z:"Isidro Casanova", t:"Dennis Brown - Revolution"},
-      {n:"Facu", z:"Gregorio de Laferrere", t:"Bob Marley - Three Little Birds"},
-      {n:"Valen", z:"Villa Luzuriaga", t:"Steel Pulse - Chant A Psalm"},
-      {n:"Mauro", z:"Villa Ballester", t:"Burning Spear - Jah No Dead"},
-      {n:"Antonela", z:"San Fernando", t:"Black Uhuru - Shine Eye Gal"}
-    ];
-
-    const pedidosList = document.getElementById("pedidosList");
-    let pedidosActuales = [];
-
-    function shuffleArray(arr){
-      const a = arr.slice();
-      for(let i = a.length - 1; i > 0; i--){
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
-      return a;
-    }
-
-    function pick3Mixed(){
-      let pool = shuffleArray(pedidosData);
-      let selected = [];
-
-      for(let i = 0; i < pool.length && selected.length < 3; i++){
-        const item = pool[i];
-        const repeated = pedidosActuales.some(p => p.n === item.n && p.t === item.t);
-        if(!repeated) selected.push(item);
-      }
-
-      if(selected.length < 3){
-        pool = shuffleArray(pedidosData);
-        for(let i = 0; i < pool.length && selected.length < 3; i++){
-          const item = pool[i];
-          const exists = selected.some(s => s.n === item.n && s.t === item.t);
-          if(!exists) selected.push(item);
-        }
-      }
-
-      return selected;
-    }
-
-    function renderPedidosBlock(){
-      pedidosActuales = pick3Mixed();
-      pedidosList.innerHTML = "";
-
-      pedidosActuales.forEach((item, idx) => {
-        const row = document.createElement("div");
-        row.className = "pedido-item";
-        row.style.animationDelay = `${idx * 0.06}s`;
-        row.innerHTML = `
-          <div class="left">
-            <strong>${item.n} de ${item.z}</strong>
-            <span>Pidio: ${item.t}</span>
+        <div class="featuredCard__body">
+          <div class="featuredCard__topline">
+            <span class="tag">${escapeHtml(findCategoryName(project.category_id))}</span>
+            ${showStatus ? `<span class="statusPill statusPill--${escapeHtml(project.status)}">${escapeHtml(mapStatusLabel(project.status))}</span>` : ""}
           </div>
-          <div class="pedido-badge">Pedido musical</div>
-        `;
-        pedidosList.appendChild(row);
-      });
-    }
 
-    renderPedidosBlock();
-    setInterval(renderPedidosBlock, 9000);
+          <h3>${escapeHtml(project.title)}</h3>
+          <p>${escapeHtml(project.short_description)}</p>
 
-    const temaForm = document.getElementById("temaForm");
-    const nombreOyente = document.getElementById("nombreOyente");
-    const numeroOyente = document.getElementById("numeroOyente");
-    const pedidoTema = document.getElementById("pedidoTema");
-    const FORM_KEY = "real_sound_form_v1";
+          <div class="projectTagsRow">
+            ${tags.map(tag => `<span class="softTag">${escapeHtml(tag.name)}</span>`).join("")}
+          </div>
 
-    (function loadSavedForm(){
-      try{
-        const data = JSON.parse(localStorage.getItem(FORM_KEY) || "{}");
-        if(data.nombre) nombreOyente.value = data.nombre;
-        if(data.numero) numeroOyente.value = data.numero;
-      } catch(e){}
-    })();
+          <div class="featuredCard__meta">${escapeHtml(project.solution_type)}</div>
+        </div>
+      </article>
+    `;
+  }).join("");
 
-    function saveFormLocal(){
-      const data = {
-        nombre: (nombreOyente.value || "").trim(),
-        numero: (numeroOyente.value || "").trim()
-      };
-      localStorage.setItem(FORM_KEY, JSON.stringify(data));
-    }
-
-    [nombreOyente, numeroOyente].forEach(el => {
-      el.addEventListener("input", saveFormLocal);
-      el.addEventListener("change", saveFormLocal);
+  featuredGrid.querySelectorAll("[data-open-project]").forEach(card => {
+    card.addEventListener("click", () => {
+      const id = card.getAttribute("data-open-project");
+      const project = projectsData.find(p => String(p.id) === String(id));
+      if (project) openProjectModal(project);
     });
+  });
+}
 
-    temaForm.addEventListener("submit", function(e){
-      e.preventDefault();
-      saveFormLocal();
+function renderCategoryChips() {
+  if (!categoryChips) return;
 
-      const nombre = (nombreOyente.value || "").trim();
-      const numero = (numeroOyente.value || "").trim();
-      const pedido = (pedidoTema.value || "").trim();
+  const categories = categoriesData
+    .filter(c => c.active)
+    .sort((a, b) => (a.order_index ?? 0) - (b.order_index ?? 0));
 
-      if(!pedido){
-        pedidoTema.focus();
-        alert("Escribi el pedido musical antes de enviar.");
-        return;
-      }
+  const baseChip = `<button class="chip ${activeCategory === "__all__" ? "isActive" : ""}" data-category="__all__" type="button">Todas</button>`;
 
-      const partes = [];
-      partes.push("Hola! Quiero pedir un tema en REAL SOUND.");
-      if(nombre) partes.push(`Nombre: ${nombre}`);
-      if(numero) partes.push(`Numero: ${numero}`);
-      partes.push(`Pedido: ${pedido}`);
+  const chips = categories.map(cat => {
+    const activeClass = activeCategory === cat.id ? "isActive" : "";
+    return `<button class="chip ${activeClass}" data-category="${cat.id}" type="button">${escapeHtml(cat.name)}</button>`;
+  }).join("");
 
-      const texto = encodeURIComponent(partes.join("\n"));
-      const waUrl = `https://wa.me/message/KPWJHN63WA3MA1?text=${texto}`;
-      window.open(waUrl, "_blank", "noopener,noreferrer");
+  categoryChips.innerHTML = baseChip + chips;
+
+  categoryChips.querySelectorAll("[data-category]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      activeCategory = btn.getAttribute("data-category");
+      visibleCount = 6;
+      renderCategoryChips();
+      renderProjects();
     });
+  });
+}
 
-    (function hideWaOnFooter(){
-      const waBtn = document.getElementById("floatingWa");
-      const footer = document.querySelector(".footer");
-      if(!waBtn || !footer) return;
+function renderTagFilter() {
+  if (!tagFilter) return;
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            waBtn.classList.add("is-hidden");
-          } else {
-            waBtn.classList.remove("is-hidden");
-          }
-        });
-      }, {
-        threshold: 0.05
-      });
+  const options = [`<option value="__all__">Todos</option>`]
+    .concat(
+      tagsData
+        .filter(tag => tag.active)
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(tag => `<option value="${tag.id}">${escapeHtml(tag.name)}</option>`)
+    )
+    .join("");
 
-      observer.observe(footer);
-    })();
+  tagFilter.innerHTML = options;
+}
 
-    (function initReveal(){
-      const revealEls = document.querySelectorAll(".reveal");
-      if(!revealEls.length) return;
+function getFilteredProjects() {
+  let list = projectsData.filter(p => p.active && p.status !== "archived");
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            entry.target.classList.add("show");
-          } else {
-            entry.target.classList.remove("show");
-          }
-        });
-      }, {
-        threshold: 0.14,
-        rootMargin: "0px 0px -8% 0px"
-      });
+  if (activeCategory !== "__all__") {
+    list = list.filter(p => String(p.category_id) === String(activeCategory));
+  }
 
-      revealEls.forEach(el => observer.observe(el));
-    })();
+  if (activeType !== "__all__") {
+    list = list.filter(p => p.solution_type === activeType);
+  }
 
-    if("serviceWorker" in navigator){
-      navigator.serviceWorker.register("/service-worker.js").catch(() => {});
+  if (activeTag !== "__all__") {
+    list = list.filter(project => {
+      const tags = getProjectTags(project.id);
+      return tags.some(tag => String(tag.id) === String(activeTag));
+    });
+  }
+
+  if (searchTerm) {
+    list = list.filter(project => {
+      const hay = norm(
+        `${project.title} ${project.short_description} ${project.full_description || ""} ${findCategoryName(project.category_id)} ${project.solution_type} ${getProjectTags(project.id).map(t => t.name).join(" ")}`
+      );
+      return hay.includes(searchTerm);
+    });
+  }
+
+  list.sort((a, b) => {
+    const ai = a.order_index ?? 0;
+    const bi = b.order_index ?? 0;
+    if (ai !== bi) return ai - bi;
+    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+  });
+
+  return list;
+}
+
+function renderProjects() {
+  if (!projectsGrid || !moreWrap) return;
+
+  const filtered = getFilteredProjects();
+
+  if (!filtered.length) {
+    projectsGrid.innerHTML = "";
+    moreWrap.style.display = "none";
+    showState("No hay proyectos para mostrar con esos filtros.");
+    return;
+  }
+
+  hideState();
+
+  const slice = filtered.slice(0, visibleCount);
+
+  projectsGrid.innerHTML = slice.map(project => {
+    const tags = getProjectTags(project.id).slice(0, 2);
+    const showStatus = shouldShowFrontStatus(project.status);
+
+    return `
+      <article class="projectCard" data-open-project="${project.id}">
+        <div class="projectCard__image">
+          <img src="${escapeHtml(project.image_url)}" alt="${escapeHtml(project.title)}" loading="lazy" />
+        </div>
+
+        <div class="projectCard__body">
+          <div class="projectCard__top">
+            <span class="tag">${escapeHtml(findCategoryName(project.category_id))}</span>
+            <span class="projectCard__type">${escapeHtml(project.solution_type)}</span>
+          </div>
+
+          ${showStatus ? `<div class="projectCard__statusRow"><span class="statusPill statusPill--${escapeHtml(project.status)}">${escapeHtml(mapStatusLabel(project.status))}</span></div>` : ""}
+
+          <h3>${escapeHtml(project.title)}</h3>
+          <p>${escapeHtml(project.short_description)}</p>
+
+          <div class="projectTagsRow">
+            ${tags.map(tag => `<span class="softTag">${escapeHtml(tag.name)}</span>`).join("")}
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  projectsGrid.querySelectorAll("[data-open-project]").forEach(card => {
+    card.addEventListener("click", () => {
+      const id = card.getAttribute("data-open-project");
+      const project = projectsData.find(p => String(p.id) === String(id));
+      if (project) openProjectModal(project);
+    });
+  });
+
+  moreWrap.style.display = filtered.length > visibleCount ? "flex" : "none";
+}
+
+function openProjectModal(project) {
+  if (!modal) return;
+
+  const tags = getProjectTags(project.id);
+  const showStatus = shouldShowFrontStatus(project.status);
+
+  if (modalCategory) modalCategory.textContent = findCategoryName(project.category_id);
+
+  if (modalStatus) {
+    if (showStatus) {
+      modalStatus.textContent = mapStatusLabel(project.status);
+      modalStatus.className = `statusPill statusPill--${project.status}`;
+      modalStatus.style.display = "inline-flex";
+    } else {
+      modalStatus.textContent = "";
+      modalStatus.style.display = "none";
     }
-  </script>
-</body>
-</html>
+  }
+
+  if (modalTitle) modalTitle.textContent = project.title;
+  if (modalImage) {
+    modalImage.src = project.image_url || "";
+    modalImage.alt = project.title || "";
+  }
+  if (modalType) modalType.textContent = project.solution_type || "-";
+  if (modalPreviewType) modalPreviewType.textContent = project.preview_type || "image";
+  if (modalShort) modalShort.textContent = project.short_description || "";
+  if (modalFull) modalFull.textContent = project.full_description || "";
+  if (modalDemoBtn) modalDemoBtn.href = project.demo_url || "#";
+
+  if (modalTagsList) {
+    modalTagsList.innerHTML = tags.map(tag => `<span class="softTag">${escapeHtml(tag.name)}</span>`).join("");
+  }
+
+  if (modalWhatsAppBtn) {
+    const msg = `Hola CIBORG 347, vi la demo "${project.title}" (${findCategoryName(project.category_id)} - ${project.solution_type}) y quiero algo así para mi marca o emprendimiento.`;
+    modalWhatsAppBtn.href = getWhatsAppUrl(msg);
+  }
+
+  modal.classList.add("isOpen");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("bodyLock");
+}
+
+function closeProjectModal() {
+  if (!modal) return;
+  modal.classList.remove("isOpen");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("bodyLock");
+}
+
+/* =========================
+   LOADERS
+========================= */
+async function loadCategories() {
+  if (!sb) return;
+  const { data, error } = await sb
+    .from("categories")
+    .select("*")
+    .eq("active", true)
+    .order("order_index", { ascending: true });
+
+  if (error) {
+    console.error(error);
+    showState("No se pudieron cargar las categorías.");
+    return;
+  }
+
+  categoriesData = data || [];
+  renderCategoryChips();
+}
+
+async function loadProjects() {
+  if (!sb) return;
+  const { data, error } = await sb
+    .from("projects")
+    .select("*")
+    .eq("active", true)
+    .is("deleted_at", null)
+    .neq("status", "archived")
+    .order("order_index", { ascending: true })
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    showState("No se pudieron cargar los proyectos.");
+    return;
+  }
+
+  projectsData = data || [];
+  renderFeatured();
+  renderProjects();
+}
+
+async function loadTags() {
+  if (!sb) return;
+  const { data, error } = await sb
+    .from("tags")
+    .select("*")
+    .eq("active", true)
+    .order("name", { ascending: true });
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  tagsData = data || [];
+  renderTagFilter();
+}
+
+async function loadProjectTags() {
+  if (!sb) return;
+  const { data, error } = await sb
+    .from("project_tags")
+    .select("project_id, tag_id");
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  projectTagsData = data || [];
+}
+
+async function loadFaqs() {
+  if (!sb) return;
+  const { data, error } = await sb
+    .from("faqs")
+    .select("*")
+    .eq("active", true)
+    .order("order_index", { ascending: true });
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  faqsData = data || [];
+  renderFaqs();
+}
+
+async function loadSiteContent() {
+  if (!sb) return;
+  const { data, error } = await sb
+    .from("site_content")
+    .select("*")
+    .eq("active", true)
+    .order("order_index", { ascending: true });
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  siteContentData = data || [];
+  applyGlobalContent();
+}
+
+async function loadSiteSettings() {
+  if (!sb) return;
+  const { data, error } = await sb
+    .from("site_settings")
+    .select("*")
+    .eq("id", "global")
+    .maybeSingle();
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  siteSettingsData = data || null;
+  applySiteSettings();
+}
+
+async function init() {
+  setDefaultWhatsAppLinks();
+  renderHeroPain(0);
+  startHeroPainRotation();
+
+  if (!sb) {
+    console.warn("Supabase no se cargó. La web sigue funcionando en modo visual.");
+    showState("No se pudo conectar con Supabase. La estructura visual sigue funcionando, pero el contenido dinámico no se cargó.");
+    return;
+  }
+
+  showState("Cargando contenido...");
+
+  await loadSiteSettings();
+  await Promise.all([
+    loadCategories(),
+    loadTags(),
+    loadProjectTags(),
+    loadProjects(),
+    loadFaqs(),
+    loadSiteContent(),
+  ]);
+
+  if (!projectsData.length) {
+    showState("Todavía no hay proyectos para mostrar.");
+  } else {
+    hideState();
+  }
+}
+
+/* =========================
+   EVENTS
+========================= */
+if (burgerBtn) {
+  burgerBtn.addEventListener("click", () => {
+    switchMobileMenu();
+  });
+}
+
+if (mobileMenu) {
+  mobileMenu.querySelectorAll("[data-close]").forEach(link => {
+    link.addEventListener("click", () => switchMobileMenu(false));
+  });
+}
+
+if (searchInput) {
+  searchInput.addEventListener("input", e => {
+    searchTerm = norm(e.target.value);
+    visibleCount = 6;
+    renderProjects();
+  });
+}
+
+if (typeFilter) {
+  typeFilter.addEventListener("change", e => {
+    activeType = e.target.value;
+    visibleCount = 6;
+    renderProjects();
+  });
+}
+
+if (tagFilter) {
+  tagFilter.addEventListener("change", e => {
+    activeTag = e.target.value;
+    visibleCount = 6;
+    renderProjects();
+  });
+}
+
+if (moreBtn) {
+  moreBtn.addEventListener("click", () => {
+    visibleCount += 6;
+    renderProjects();
+  });
+}
+
+if (heroPainTabs) {
+  heroPainTabs.querySelectorAll("[data-pain]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const next = Number(btn.getAttribute("data-pain") || 0);
+      renderHeroPain(next);
+      startHeroPainRotation();
+    });
+  });
+}
+
+if (modalBackdrop) {
+  modalBackdrop.addEventListener("click", closeProjectModal);
+}
+
+if (modalClose) {
+  modalClose.addEventListener("click", closeProjectModal);
+}
+
+window.addEventListener("keydown", e => {
+  if (e.key === "Escape" && modal && modal.classList.contains("isOpen")) {
+    closeProjectModal();
+  }
+});
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
